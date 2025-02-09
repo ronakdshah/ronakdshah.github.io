@@ -1,0 +1,66 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{nopageno} % Suppresses page numbers
+
+% Page layout
+\geometry{top=0.4in, bottom=0.4in, left=0.5in, right=0.5in}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{noitemsep, topsep=0pt, left=0pt}
+\titlespacing{\section}{0pt}{8pt}{4pt}
+\renewcommand{\baselinestretch}{1.1}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge {{personal.name}}}\\
+    {{personal.location}} \hspace{1em} \href{mailto:{{personal.email}}}{{'{'}}{{personal.email}}{{'}'}} \hspace{1em} {{personal.phone}} \hspace{1em} \href{{'{'}}{{personal.linkedin}}{{'}'}}{LinkedIn}
+\end{center}
+
+\section*{Summary}
+Results-driven Software Engineer with expertise in backend development, machine learning, and financial risk analysis. Adept at building scalable systems, designing APIs, and implementing end-to-end solutions. Proven track record of optimizing processes, reducing fraud risks, and delivering measurable business outcomes. Seeking to leverage a strong foundation in quantitative finance and Software Engineering to drive innovation in fintech.
+
+\section*{Experience}
+
+{% for job in experiences %}
+\textbf{{ '{{' }}{{job.company}}{{ '}}' }} \textit{{ '{{' }}{{job.role}}{{ '}}' }} \hfill \textit{{ '{{' }}{{job.duration}}{{ '}}' }}
+\begin{itemize}
+    {% for bullet in job.responsibilities %}
+    \item \textbf{{ '{{' }}{{bullet.title}}{{ '}}' }}: {{ bullet.description }}
+    {% endfor %}
+\end{itemize}
+
+{% endfor %}
+
+\section*{Projects}
+\textbf{{ '{{' }}{{project.name}}{{ '}}' }}
+\begin{itemize}
+    {% for item in project.details %}
+    \item {{ item }}
+    {% endfor %}
+    {% if project.research_paper %}
+    \item Published research paper \textit{{ '{{' }}{{project.research_paper.title}}{{ '}}' }} \href{{ '{{' }}{{project.research_paper.link}}{{ '}}' }}{{ '{{' }}[link]{{'}}'}}
+    {% endif %}
+\end{itemize}
+
+\section*{Awards \& Achievements}
+\begin{itemize}
+    \item Award of Honor for Outstanding Academic Excellence in AMS, Stony Brook University
+    \item Graduate Certificate in Quantitative Finance from AMS, Stony Brook University
+    \item Published research paper: \textit{A unified framework for fast large-scale portfolio optimization} \href{https://arxiv.org/abs/2303.12751}{[link]}
+\end{itemize}
+
+\section*{Education}
+{% for items in education.degrees%}
+\textbf{{'{{'}}{{items.degree}} {{items.school}} (GPA:{{items.gpa}}){{ '}}' }} \hfill \textit{{'{{'}}{{items.start_date}} -- {{items.end_date}}{{'}}'}} {% if not loop.last %}\\{% endif %}
+{% endfor %}
+
+\section*{Skills}
+{% for category, skills in skillset.items() %}
+\textbf{{ '{{' }}{{category}}{{ '}}' }}: {{ skills|join(", ") }}{% if not loop.last %}\\{% endif %}
+{% endfor %}
+
+\end{document}
