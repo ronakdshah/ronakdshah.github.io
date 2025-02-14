@@ -1,0 +1,12 @@
+<div class="section">
+    <h2>Projects</h2>
+    <h3>{{ project.name }}</h3>
+    <ul>
+        {% for item in project.details %}
+        <li>{{ item }}</li>
+        {% endfor %}
+        {% if project.research_paper %}
+        <li>Published research paper <em>{{ project.research_paper.title }}</em> <a href="{{ project.research_paper.link }}">Link</a>.</li>
+        {% endif %}
+    </ul>
+</div>

@@ -1,0 +1,8 @@
+<div class="section">
+    <h2>Skills</h2>
+    <ul>
+        {% for category, skills in skillset.items() %}
+        <li><strong>{{ category }}:</strong> {{ skills|join(", ") }}</li>
+        {% endfor %}
+    </ul>
+</div>

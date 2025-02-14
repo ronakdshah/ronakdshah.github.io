@@ -1,16 +1,16 @@
 import toml
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader
+import os
 
 # Load data from TOML file
 with open("config.toml", "r", encoding="utf-8") as f:
     data = toml.load(f)
 
 # Load Jinja template
-with open("./templates/resume.tex.jinja", "r", encoding="utf-8") as f:
-    tex_tmpl = f.read()
+template_dir = os.path.join(os.path.dirname(__file__), '../templates/tex')
+env = Environment(loader=FileSystemLoader(template_dir))
+tex_tmpl = env.get_template("resume.tex.jinja")
 
-with open("./templates/resume.html.jinja", "r", encoding="utf-8") as f:
-    html_tmpl = f.read()
 
 # Function to escape LaTeX special characters
 def escape_latex(text):
@@ -44,13 +44,8 @@ def escape_dict(d):
 escaped_data = escape_dict(data)
 
 # Render template with escaped data
-template = Template(tex_tmpl)
-rendered_tex = template.render(escaped_data)
+rendered_tex = tex_tmpl.render(escaped_data)
 
-# Render HTML template
-template = Template(html_tmpl)
-rendered_html = template.render(data)
-# Remove extra empty lines
 rendered_tex = "\n".join([line for line in rendered_tex.splitlines() if line.strip() != ""])
 
 # Save rendered LaTeX file
@@ -58,9 +53,3 @@ with open("resume.tex", "w", encoding="utf-8") as f:
     f.write(rendered_tex)
 
 print("LaTeX resume generated successfully!")
-
-# Save rendered html file
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(rendered_html)
-
-print("html resume generated successfully!")

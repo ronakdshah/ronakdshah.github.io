@@ -1,0 +1,32 @@
+{% extends "base.html.jinja" %}
+
+{% block content %}
+    {% include 'summary.html.jinja' %}
+    {% include 'experience.html.jinja' %}
+    {% include 'projects.html.jinja' %}
+    {% include 'awards.html.jinja' %}
+    {% include 'education.html.jinja' %}
+    {% include 'skills.html.jinja' %}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll(".section");
+
+            function checkVisibility() {
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < (window.innerHeight || document.documentElement.clientHeight) * 0.95 && rect.bottom > (window.innerHeight || document.documentElement.clientHeight) * 0.15) {
+                        section.classList.add("visible");
+                    } else {
+                        section.classList.remove("visible");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", checkVisibility);
+            checkVisibility();
+        });
+    </script>
+{% endblock %}

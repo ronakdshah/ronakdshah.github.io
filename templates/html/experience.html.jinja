@@ -1,0 +1,11 @@
+<div class="section">
+    <h2>Experience</h2>
+    {% for job in experiences %}
+    <h3>{{ job.company }} - {{ job.role }} ({{ job.duration }})</h3>
+    <ul>
+        {% for bullet in job.responsibilities %}
+        <li><strong>{{ bullet.title }}:</strong> {{ bullet.description }}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
