@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{{ personal.name }} - Portfolio</title>
-    <link rel="stylesheet" href="static/main.css">
-</head>
-<body>
+{%extends "base.html.jinja"%}
+{%block body%}
     <div class="header">
         <h1>{{ personal.name }}</h1>
     </div>
@@ -91,5 +84,4 @@
             checkVisibility();
         });
     </script>
-</body>
-</html>
+{%endblock%}
