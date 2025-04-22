@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: portfolio-website
+  name: portfolio-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-website
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: portfolio-website
+    spec:
+      containers:
+      - image: portfolio-website:latest
+        name: portfolio-website
+        resources: {}
+        imagePullPolicy: Never
+status: {}
