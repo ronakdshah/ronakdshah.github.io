@@ -1,3 +1,66 @@
+[[experiences]]
+company = "MerQube Inc"
+role = "Backend Engineer"
+duration = "Jun 2023 -- Present"
+[[experiences.responsibilities]]
+title = "Enhanced Portfolio Management"
+description = "Built an async API powering 100+ indices daily, enabling real-time portfolio validation, scheduling, and driving $600k ARR"
+
+[[experiences.responsibilities]]
+title = "Tax Rate Automation"
+description = "Designed a custom API for uploading tax rates that helped generate $60k annually"
+
+[[experiences.responsibilities]]
+title = "Error Detection System"
+description = "Engineered a pluggable QC system catching index issues pre-distribution, scaling to 9000 checks/day across 8000 indices"
+
+[[experiences.responsibilities]]
+title = "File Monitor System"
+description = "Created a file monitoring system to scan SFTP servers and execute user-defined functions, generating $100k annually and integrated with Grafana for monitoring"
+
+[[experiences.responsibilities]]
+title = "Index Config Update Tool"
+description = "Delivered a bulk update API to reduce index configuration update time by 80%"
+
+[[experiences.responsibilities]]
+title = "Index Reporting"
+description = "Designed standard index reporting framework and scaled it to 6.8k indices"
+
+[[experiences.responsibilities]]
+title = "Self Service Indices"
+description = "Delivered backend for client-driven options index launch, cutting deployment time from 1 day to 5 mins"
+
+
+[[experiences]]
+company = "Affirm Inc"
+role = "ML Engineer"
+duration = "Oct 2021 -- Feb 2023"
+[[experiences.responsibilities]]
+title = "Risk Exposure API"
+description = "Built a CatBoost model to estimate daily merchant risk exposure, improved loss by 20%"
+
+[[experiences.responsibilities]]
+title = "Onboarding Risk Rating"
+description = "Developed a GBM model for merchant onboarding, reducing fraud losses by 10%"
+
+[[experiences.responsibilities]]
+title = "Linking Analysis"
+description = "Implemented Graph Algorithm to flag suspicious merchants resulting in 4% reduction in losses"
+
+
+[[experiences]]
+company = "FedEx Ground"
+role = "Data Engineer"
+duration = "Jul 2020 -- Sep 2021"
+[[experiences.responsibilities]]
+title = "Automated Reports"
+description = "Developed automated dashboards for the CFO’s office, reducing manual reporting time by 50%"
+
+[[experiences.responsibilities]]
+title = "Data Ingestion"
+description = "Created streamlined data processing pipeline to deliver weekly performance reports to stakeholders"
+
+
 [personal]
 name = "Ronak D. Shah"
 location = "San Francisco, CA"
@@ -9,65 +72,58 @@ webpage = "https://ronakdshah.github.io/"
 [summary]
 text = "Results-driven Software Engineer with expertise in backend development, machine learning, and financial risk analysis. Adept at building scalable systems, designing APIs, and implementing end-to-end solutions. Proven track record of optimizing processes, reducing fraud risks, and delivering measurable business outcomes. Seeking to leverage a strong foundation in quantitative finance and Software Engineering to drive innovation in fintech."
 
-[[experiences]]
-company = "MerQube Inc"
-role = "Backend Engineer"
-duration = "Jun 2023 -- Present"
-responsibilities = [
-    { title = "Enhanced Portfolio Management", description = "Built an API endpoint enabling clients to submit target portfolios for automated index rebalancing, launching 100+ indices and generating $600k annually" },
-    { title = "Tax Rate Automation", description = "Designed a custom API for uploading tax rates that helped generate $60k annually" },
-    { title = "Error Detection System", description = "Developed an error detection framework and scaled it to support 6.8k indices, saving $50k" },
-    { title = "File Monitor System", description = "Created a file monitoring system to scan SFTP servers and execute user-defined functions, generating $100k annually and integrated with Grafana for monitoring" },
-    { title = "Index Config Update Tool", description = "Delivered a bulk update API to reduce index configuration update time by 80%" },
-    { title = "Index Reporting", description = "Designed standard index reporting framework and scaled it to 6.8k indices" },
-    { title = "Self Service Indices", description = "Designed an API to launch indices, reducing the launch time from 1 day to 5 minutes" }
-]
-
-[[experiences]]
-company = "Affirm Inc"
-role = "ML Engineer"
-duration = "Oct 2021 -- Feb 2023"
-responsibilities = [
-    { title = "Risk Exposure API", description = "Built a CatBoost model to estimate daily merchant risk exposure, improved loss by 20%" },
-    { title = "Onboarding Risk Rating", description = "Developed a GBM model for merchant onboarding, reducing fraud losses by 10%" },
-    { title = "Linking Analysis", description = "Implemented Graph Algorithm to flag suspicious merchants resulting in 4% reduction in losses" }
-]
-
-[[experiences]]
-company = "FedEx Ground"
-role = "Data Engineer"
-duration = "Jul 2020 -- Sep 2021"
-responsibilities = [
-    { title = "Automated Reports", description = "Developed automated dashboards for the CFO’s office, reducing manual reporting time by 50%" },
-    { title = "Data Ingestion", description = "Created streamlined data processing pipeline to deliver weekly performance reports to stakeholders" }
-]
-
 [project]
 name = "Portfolio Optimization"
 details = [
     "Developed an end-to-end Flask web app to experiment with the Portfolio Optimization Package",
     "Managed the CI/CD pipeline using GitHub Actions for deploying backend and frontend",
-    "Designed and administered a database to store NYSE ticker data using Clickhouse"
+    "Designed and administered a database to store NYSE ticker data using Clickhouse",
 ]
-
-[project.research_paper]
-title = "A unified framework for fast large-scale portfolio optimization"
-link = "https://arxiv.org/abs/2303.12751"
 
 [awards]
 items = [
     "Award of Honor for Outstanding Academic Excellence in AMS, Stony Brook University",
     "Graduate Certificate in Quantitative Finance from AMS, Stony Brook University",
-    "Published research paper: \\textit{A unified framework for fast large-scale portfolio optimization} \\href{https://arxiv.org/abs/2303.12751}{[link]}"
+    "Published research paper: \\textit{A unified framework for fast large-scale portfolio optimization} \\href{https://arxiv.org/abs/2303.12751}{[link]}",
 ]
 
 [education]
-degrees = [
-    { degree = "MS Applied Math and Stats", school = "Stony Brook University", gpa = "3.95/4", start_date = "Aug 2019", end_date="May 2021" },
-    { degree = "Bachelor of Technology", school = "SVNIT Surat", gpa = "8.51/10", start_date = "Jul 2012", end_date="May 2016" }
-]
+[[education.degrees]]
+degree = "MS Applied Math and Stats"
+school = "Stony Brook University"
+gpa = "3.95/4"
+start_date = "Aug 2019"
+end_date = "May 2021"
+
+[[education.degrees]]
+degree = "Bachelor of Technology"
+school = "SVNIT Surat"
+gpa = "8.51/10"
+start_date = "Jul 2012"
+end_date = "May 2016"
 
 [skillset]
 Languages = ["Python", "Julia", "JavaScript", "R", "SQL", "Go", "Bash"]
-"Tools and Libraries" = ["DBT", "AWS", "Spark", "Git", "Ansible", "Clickhouse", "Flask", "Pydantic", "Docker", "OpenLens", "Kubectl"]
-"Machine Learning" = ["Tree Models", "Convex Optimization", "Linear Models", "Stochastic Calculus"]
+"Tools and Libraries" = [
+    "DBT",
+    "AWS",
+    "Spark",
+    "Git",
+    "Ansible",
+    "Clickhouse",
+    "Flask",
+    "Pydantic",
+    "Docker",
+    "OpenLens",
+    "Kubectl",
+]
+"Machine Learning" = [
+    "Tree Models",
+    "Convex Optimization",
+    "Linear Models",
+    "Stochastic Calculus",
+]
+
+[project.research_paper]
+title = "A unified framework for fast large-scale portfolio optimization"
+link = "https://arxiv.org/abs/2303.12751"
