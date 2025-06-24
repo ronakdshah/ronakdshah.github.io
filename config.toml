@@ -1,66 +1,3 @@
-[[experiences]]
-company = "MerQube Inc"
-role = "Backend Engineer"
-duration = "Jun 2023 -- Present"
-[[experiences.responsibilities]]
-title = "Enhanced Portfolio Management"
-description = "Built an async API powering 100+ indices daily, enabling real-time portfolio validation, scheduling, and driving $600k ARR"
-
-[[experiences.responsibilities]]
-title = "Tax Rate Automation"
-description = "Designed a custom API for uploading tax rates that helped generate $60k annually"
-
-[[experiences.responsibilities]]
-title = "Error Detection System"
-description = "Engineered a pluggable QC system catching index issues pre-distribution, scaling to 9000 checks/day across 8000 indices"
-
-[[experiences.responsibilities]]
-title = "File Monitor System"
-description = "Created a file monitoring system to scan SFTP servers and execute user-defined functions, generating $100k annually and integrated with Grafana for monitoring"
-
-[[experiences.responsibilities]]
-title = "Index Config Update Tool"
-description = "Delivered a bulk update API to reduce index configuration update time by 80%"
-
-[[experiences.responsibilities]]
-title = "Index Reporting"
-description = "Designed standard index reporting framework and scaled it to 6.8k indices"
-
-[[experiences.responsibilities]]
-title = "Self Service Indices"
-description = "Delivered backend for client-driven options index launch, cutting deployment time from 1 day to 5 mins"
-
-
-[[experiences]]
-company = "Affirm Inc"
-role = "ML Engineer"
-duration = "Oct 2021 -- Feb 2023"
-[[experiences.responsibilities]]
-title = "Risk Exposure API"
-description = "Built a CatBoost model to estimate daily merchant risk exposure, improved loss by 20%"
-
-[[experiences.responsibilities]]
-title = "Onboarding Risk Rating"
-description = "Developed a GBM model for merchant onboarding, reducing fraud losses by 10%"
-
-[[experiences.responsibilities]]
-title = "Linking Analysis"
-description = "Implemented Graph Algorithm to flag suspicious merchants resulting in 4% reduction in losses"
-
-
-[[experiences]]
-company = "FedEx Ground"
-role = "Data Engineer"
-duration = "Jul 2020 -- Sep 2021"
-[[experiences.responsibilities]]
-title = "Automated Reports"
-description = "Developed automated dashboards for the CFO’s office, reducing manual reporting time by 50%"
-
-[[experiences.responsibilities]]
-title = "Data Ingestion"
-description = "Created streamlined data processing pipeline to deliver weekly performance reports to stakeholders"
-
-
 [personal]
 name = "Ronak D. Shah"
 location = "San Francisco, CA"
@@ -70,21 +7,83 @@ linkedin = "http://www.linkedin.com/in/ronakshah52"
 webpage = "https://ronakdshah.github.io/"
 
 [summary]
-text = "Results-driven Software Engineer with expertise in backend development, machine learning, and financial risk analysis. Adept at building scalable systems, designing APIs, and implementing end-to-end solutions. Proven track record of optimizing processes, reducing fraud risks, and delivering measurable business outcomes. Seeking to leverage a strong foundation in quantitative finance and Software Engineering to drive innovation in fintech."
+text = "Backend Engineer with 2+ years of experience in scalable systems and 5+ years in ML/data. Proven fintech impact through automation, tooling, and risk modeling."
+
+[[experiences]]
+company = "MerQube Inc"
+role = "Backend Engineer"
+duration = "Jun 2023 -- Present"
+[[experiences.responsibilities]]
+title = "Async Portfolio API"
+description = "Designed and deployed an async Python API serving 100+ indices daily with real-time portfolio validation and scheduling; enabled automation for $600k ARR in index launches"
+
+[[experiences.responsibilities]]
+title = "Tax Rate Upload Service"
+description = "Built a secure, extensible API for uploading and managing tax rates; improved compliance workflows and generated $60k in annual revenue"
+
+[[experiences.responsibilities]]
+title = "Pluggable QC Framework"
+description = "Engineered a modular QC system executing 9000 checks/day across 8000 indices, ensuring distribution integrity and accelerating pre-release validation"
+
+[[experiences.responsibilities]]
+title = "File Monitoring Service"
+description = "Developed a robust file monitor scanning SFTP endpoints and executing user-defined functions; integrated with Grafana and contributed $100k in annual recurring value"
+
+[[experiences.responsibilities]]
+title = "Index Configuration Tool"
+description = "Created a bulk configuration update API reducing operational overhead by 80%; streamlined complex index editing workflows"
+
+[[experiences.responsibilities]]
+title = "Index Reporting Engine"
+description = "Architected a scalable index reporting framework now supporting 6,800 indices; improved reporting latency and reduced manual intervention"
+
+[[experiences.responsibilities]]
+title = "Self-Service Index Launch"
+description = "Delivered backend infra for client-driven options index deployment; cut turnaround time from 1 day to under 5 minutes"
+
+[[experiences]]
+company = "Affirm Inc"
+role = "ML Engineer"
+duration = "Oct 2021 -- Feb 2023"
+[[experiences.responsibilities]]
+title = "Merchant Risk API"
+description = "Built and productionized a CatBoost-based API for real-time risk exposure estimation; improved loss accuracy by 20%"
+
+[[experiences.responsibilities]]
+title = "Onboarding Risk Model"
+description = "Designed a GBM-based fraud detection model reducing onboarding-related fraud by 10%; integrated seamlessly with merchant approval pipeline"
+
+[[experiences.responsibilities]]
+title = "Graph-based Fraud Detection"
+description = "Applied graph analytics to identify suspicious merchant clusters; led to a 4% reduction in financial loss"
+
+[[experiences]]
+company = "FedEx Ground"
+role = "Data Engineer"
+duration = "Jul 2020 -- Sep 2021"
+[[experiences.responsibilities]]
+title = "CFO Reporting Automation"
+description = "Built automated dashboards reducing manual reporting time by 50%; ensured reliability and on-time delivery of performance insights"
+
+[[experiences.responsibilities]]
+title = "Weekly Metrics Pipeline"
+description = "Designed a repeatable ETL pipeline for delivering weekly operations reports to stakeholders with improved data freshness"
 
 [project]
 name = "Portfolio Optimization"
 details = [
-    "Developed an end-to-end Flask web app to experiment with the Portfolio Optimization Package",
-    "Managed the CI/CD pipeline using GitHub Actions for deploying backend and frontend",
-    "Designed and administered a database to store NYSE ticker data using Clickhouse",
+    "Built a Flask-based tool with Clickhouse and CI/CD for portfolio optimization"
 ]
 
+[project.research_paper]
+title = "A unified framework for fast large-scale portfolio optimization"
+link = "https://arxiv.org/abs/2303.12751"
+
 [awards]
-items = [
+name = "Awards and Achievements"
+details = [
     "Award of Honor for Outstanding Academic Excellence in AMS, Stony Brook University",
     "Graduate Certificate in Quantitative Finance from AMS, Stony Brook University",
-    "Published research paper: \\textit{A unified framework for fast large-scale portfolio optimization} \\href{https://arxiv.org/abs/2303.12751}{[link]}",
 ]
 
 [education]
@@ -103,27 +102,7 @@ start_date = "Jul 2012"
 end_date = "May 2016"
 
 [skillset]
-Languages = ["Python", "Julia", "JavaScript", "R", "SQL", "Go", "Bash"]
-"Tools and Libraries" = [
-    "DBT",
-    "AWS",
-    "Spark",
-    "Git",
-    "Ansible",
-    "Clickhouse",
-    "Flask",
-    "Pydantic",
-    "Docker",
-    "OpenLens",
-    "Kubectl",
-]
-"Machine Learning" = [
-    "Tree Models",
-    "Convex Optimization",
-    "Linear Models",
-    "Stochastic Calculus",
-]
-
-[project.research_paper]
-title = "A unified framework for fast large-scale portfolio optimization"
-link = "https://arxiv.org/abs/2303.12751"
+Languages = ["Python", "Go", "SQL", "JavaScript"]
+"Frameworks / Backend" = ["Flask", "Pydantic", "Clickhouse", "FastAPI"]
+Infrastructure = ["Docker", "AWS", "Ansible", "Git", "OpenLens", "Kubectl"]
+"ML \\& Data" = ["Tree Models", "Convex Optimization", "Graph Algorithms", "Data Pipelines"]

@@ -10,8 +10,8 @@
 \geometry{top=0.4in, bottom=0.4in, left=0.5in, right=0.5in}
 \setlength{\parindent}{0pt}
 \setlist[itemize]{noitemsep, topsep=0pt, left=0pt}
-\titlespacing{\section}{0pt}{8pt}{4pt}
-\renewcommand{\baselinestretch}{1.1}
+\titlespacing{\section}{0pt}{4pt}{4pt}
+\renewcommand{\baselinestretch}{1.0}
 
 \begin{document}
 
@@ -21,7 +21,7 @@
 \end{center}
 
 \section*{Summary}
-Results-driven Software Engineer with expertise in backend development, machine learning, and financial risk analysis. Adept at building scalable systems, designing APIs, and implementing end-to-end solutions. Proven track record of optimizing processes, reducing fraud risks, and delivering measurable business outcomes. Seeking to leverage a strong foundation in quantitative finance and Software Engineering to drive innovation in fintech.
+{{summary.text}}
 
 \section*{Experience}
 
@@ -46,11 +46,11 @@ Results-driven Software Engineer with expertise in backend development, machine 
     {% endif %}
 \end{itemize}
 
-\section*{Awards \& Achievements}
+\section*{ {{awards.name}}}
 \begin{itemize}
-    \item Award of Honor for Outstanding Academic Excellence in AMS, Stony Brook University
-    \item Graduate Certificate in Quantitative Finance from AMS, Stony Brook University
-    \item Published research paper: \textit{A unified framework for fast large-scale portfolio optimization} \href{https://arxiv.org/abs/2303.12751}{[link]}
+    {% for item in awards.details %}
+    \item {{ item }}
+    {% endfor %}
 \end{itemize}
 
 \section*{Education}
