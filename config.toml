@@ -2,7 +2,7 @@
 name = "Ronak D. Shah"
 location = "San Francisco, CA"
 email = "roshah2023@gmail.com"
-phone = "(412)-447-1666"
+phone = "(631) - 428 - 0437"
 linkedin = "http://www.linkedin.com/in/ronakshah52"
 webpage = "https://ronakdshah.github.io/"
 
@@ -11,40 +11,41 @@ text = "Backend Engineer with 2+ years of experience in scalable systems and 5+ 
 
 [[experiences]]
 company = "MerQube Inc"
-role = "Backend Engineer"
+role = "Software Engineer - Backend"
 duration = "Jun 2023 -- Present"
+
 [[experiences.responsibilities]]
 title = "Async Portfolio API"
-description = "Designed and deployed an async Python API serving 100+ indices daily with real-time portfolio validation and scheduling; enabled automation for $600k ARR in index launches"
+description = "Architected async Python API for validating 100+ portfolios/day; enabled $600k ARR by automating index portfolio management"
 
 [[experiences.responsibilities]]
-title = "Tax Rate Upload Service"
-description = "Built a secure, extensible API for uploading and managing tax rates; improved compliance workflows and generated $60k in annual revenue"
+title = "Index Platform API"
+description = "Designed and scaled production-grade FastAPI backend on K8s, improving developer and operations experience on working with index code"
 
 [[experiences.responsibilities]]
-title = "Pluggable QC Framework"
-description = "Engineered a modular QC system executing 9000 checks/day across 8000 indices, ensuring distribution integrity and accelerating pre-release validation"
+title = "Real Time System"
+description = "Led real-time infra upgrades using time-based autoscaling and safe rollovers, improving system uptime and reducing deployment costs"
 
 [[experiences.responsibilities]]
 title = "File Monitoring Service"
-description = "Developed a robust file monitor scanning SFTP endpoints and executing user-defined functions; integrated with Grafana and contributed $100k in annual recurring value"
+description = "Built resilient file monitor service with user-defined workflows and integrated prometheus metrics and Grafana alerts, adding $100k in ARR"
 
 [[experiences.responsibilities]]
-title = "Index Configuration Tool"
-description = "Created a bulk configuration update API reducing operational overhead by 80%; streamlined complex index editing workflows"
+title = "Multi Asset Framework"
+description = "Engineered object oriented framework with abstract interfaces and modular components for multi-asset indices; enabled reusable, type-safe index development"
 
 [[experiences.responsibilities]]
 title = "Index Reporting Engine"
-description = "Architected a scalable index reporting framework now supporting 6,800 indices; improved reporting latency and reduced manual intervention"
+description = "Engineered scalable, standardized reporting pipeline for 6,800+ indices. Implemented robust data validation using pydantic to ensure accuracy and reliability"
 
 [[experiences.responsibilities]]
-title = "Self-Service Index Launch"
-description = "Delivered backend infra for client-driven options index deployment; cut turnaround time from 1 day to under 5 minutes"
+title = "Self-Service Index API"
+description = "Delivered client-facing API for index creation and backtesting; enabled near real-time onboarding of custom index strategies"
 
 [[experiences]]
 company = "Affirm Inc"
-role = "ML Engineer"
-duration = "Oct 2021 -- Feb 2023"
+role = "Software Engineer - Quantitative Risk"
+duration = "Oct 2021 -- May 2023"
 [[experiences.responsibilities]]
 title = "Merchant Risk API"
 description = "Built and productionized a CatBoost-based API for real-time risk exposure estimation; improved loss accuracy by 20%"
@@ -59,7 +60,7 @@ description = "Applied graph analytics to identify suspicious merchant clusters;
 
 [[experiences]]
 company = "FedEx Ground"
-role = "Data Engineer"
+role = "Software Engineer - Data Science"
 duration = "Jul 2020 -- Sep 2021"
 [[experiences.responsibilities]]
 title = "CFO Reporting Automation"
