@@ -2,7 +2,7 @@
 name = "Ronak D. Shah"
 location = "San Francisco, CA"
 email = "roshah2023@gmail.com"
-phone = "(631) - 428 - 0437"
+phone = "(412) - 447 - 1666"
 linkedin = "http://www.linkedin.com/in/ronakshah52"
 webpage = "https://ronakdshah.github.io/"
 
@@ -59,7 +59,7 @@ title = "Graph-based Fraud Detection"
 description = "Applied graph analytics to identify suspicious merchant clusters; led to a 4% reduction in financial loss"
 
 [[experiences]]
-company = "FedEx Ground"
+company = "FedEx Ground Inc"
 role = "Software Engineer - Data Science"
 duration = "Jul 2020 -- Sep 2021"
 [[experiences.responsibilities]]
