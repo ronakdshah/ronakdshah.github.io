@@ -1,12 +1,121 @@
-<div class="section">
-    <h2>Projects</h2>
-    <h3>{{ project.name }}</h3>
-    <ul>
-        {% for item in project.details %}
-        <li>{{ item }}</li>
-        {% endfor %}
-        {% if project.research_paper %}
-        <li>Published research paper <em>{{ project.research_paper.title }}</em> <a href="{{ project.research_paper.link }}">Link</a>.</li>
+<!-- Projects Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Innovative solutions and research that demonstrate my technical expertise</p>
+        </div>
+        
+        <!-- Main Project -->
+        {% if project %}
+        <div class="mb-16">
+            <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 md:p-12 border border-purple-100">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Project Info -->
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
+                                <i class="fas fa-rocket text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">{{ project.name }}</h3>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            {% for detail in project.details %}
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <p class="text-gray-700">{{ detail }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-white/80 rounded-full text-sm font-medium text-purple-600">Flask</span>
+                            <span class="px-3 py-1 bg-white/80 rounded-full text-sm font-medium text-purple-600">Clickhouse</span>
+                            <span class="px-3 py-1 bg-white/80 rounded-full text-sm font-medium text-purple-600">CI/CD</span>
+                            <span class="px-3 py-1 bg-white/80 rounded-full text-sm font-medium text-purple-600">Portfolio Optimization</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Research Paper -->
+                    {% if project.research_paper %}
+                    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-file-alt text-white text-2xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-3">Research Publication</h4>
+                            <p class="text-gray-600 text-sm mb-6">{{ project.research_paper.title }}</p>
+                            <a href="{{ project.research_paper.link }}" target="_blank" 
+                               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Read Paper
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
         {% endif %}
-    </ul>
-</div>
+        
+        <!-- Additional Projects Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project Card 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-chart-line text-white text-xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Risk Modeling API</h4>
+                <p class="text-gray-600 text-sm mb-4">CatBoost-based API for real-time risk exposure estimation with 20% improved accuracy</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">CatBoost</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">API</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">ML</span>
+                </div>
+            </div>
+            
+            <!-- Project Card 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-network-wired text-white text-xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Graph Analytics</h4>
+                <p class="text-gray-600 text-sm mb-4">Graph-based fraud detection system identifying suspicious merchant clusters</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Graph Analytics</span>
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Fraud Detection</span>
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Python</span>
+                </div>
+            </div>
+            
+            <!-- Project Card 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-tachometer-alt text-white text-xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Real-time Infrastructure</h4>
+                <p class="text-gray-600 text-sm mb-4">Time-based autoscaling and safe rollovers improving system uptime</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">Kubernetes</span>
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">Autoscaling</span>
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">DevOps</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="text-center mt-16">
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">Interested in My Work?</h3>
+                <p class="text-purple-100 mb-6">Let's discuss how I can help bring your next project to life</p>
+                <a href="#contact" class="inline-flex items-center px-8 py-3 bg-white text-purple-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <i class="fas fa-paper-plane mr-3"></i>
+                    Start a Conversation
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

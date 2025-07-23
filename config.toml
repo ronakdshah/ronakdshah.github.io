@@ -107,3 +107,119 @@ Languages = ["Python", "Go", "SQL", "JavaScript"]
 "Frameworks / Backend" = ["Flask", "Pydantic", "Clickhouse", "FastAPI"]
 Infrastructure = ["Docker", "AWS", "Ansible", "Git", "OpenLens", "Kubectl"]
 "ML \\& Data" = ["Tree Models", "Convex Optimization", "Graph Algorithms", "Data Pipelines"]
+
+# Enhanced Technical Expertise Section
+[technical_expertise]
+[[technical_expertise.categories]]
+name = "Backend Development"
+proficiency = 95
+description = "Expert-level backend development with focus on scalable APIs and microservices"
+technologies = ["FastAPI", "Flask", "Django", "Pydantic", "SQLAlchemy"]
+achievements = [
+    "Built production APIs handling 100+ portfolios/day",
+    "Scaled FastAPI backend on Kubernetes",
+    "Implemented async processing for real-time data"
+]
+
+[[technical_expertise.categories]]
+name = "Data Science & ML"
+proficiency = 90
+description = "Advanced machine learning and data science with focus on fintech applications"
+technologies = ["CatBoost", "GBM", "Graph Analytics", "Scikit-learn", "Pandas"]
+achievements = [
+    "Improved risk model accuracy by 20%",
+    "Reduced fraud by 10% with ML models",
+    "Applied graph analytics for fraud detection"
+]
+
+[[technical_expertise.categories]]
+name = "Cloud Infrastructure"
+proficiency = 85
+description = "Comprehensive cloud infrastructure and DevOps expertise"
+technologies = ["AWS", "Docker", "Kubernetes", "Ansible", "Prometheus"]
+achievements = [
+    "Implemented time-based autoscaling",
+    "Reduced deployment costs with infrastructure optimization",
+    "Built resilient monitoring systems"
+]
+
+[[technical_expertise.categories]]
+name = "DevOps & CI/CD"
+proficiency = 80
+description = "Modern DevOps practices and continuous integration/deployment"
+technologies = ["Git", "CI/CD", "Monitoring", "Grafana", "Prometheus"]
+achievements = [
+    "Automated deployment pipelines",
+    "Integrated comprehensive monitoring",
+    "Improved system uptime and reliability"
+]
+
+# Enhanced Domain Knowledge Section
+[domain_knowledge]
+[[domain_knowledge.areas]]
+name = "Fintech & Quantitative Finance"
+description = "Deep expertise in financial technology and quantitative modeling"
+expertise_level = "Expert"
+key_areas = [
+    "Portfolio Optimization",
+    "Risk Modeling",
+    "Index Management",
+    "Financial APIs",
+    "Real-time Trading Systems"
+]
+achievements = [
+    "Generated $600k ARR through portfolio automation",
+    "Managed 6,800+ indices with automated reporting",
+    "Built real-time risk exposure estimation systems"
+]
+
+[[domain_knowledge.areas]]
+name = "Machine Learning & AI"
+description = "Advanced machine learning with focus on practical business applications"
+expertise_level = "Advanced"
+key_areas = [
+    "Predictive Modeling",
+    "Fraud Detection",
+    "Graph Analytics",
+    "Automated Decision Systems",
+    "Model Productionization"
+]
+achievements = [
+    "Deployed ML models in production environments",
+    "Applied graph algorithms for fraud detection",
+    "Built automated risk assessment systems"
+]
+
+[[domain_knowledge.areas]]
+name = "Scalable Systems Architecture"
+description = "Expertise in designing and building high-performance, scalable systems"
+expertise_level = "Expert"
+key_areas = [
+    "Microservices Architecture",
+    "High-Performance APIs",
+    "Distributed Systems",
+    "Real-time Processing",
+    "System Optimization"
+]
+achievements = [
+    "Architected async portfolio validation systems",
+    "Scaled APIs to handle high-throughput workloads",
+    "Implemented resilient file monitoring services"
+]
+
+[[domain_knowledge.areas]]
+name = "Data Analytics & Business Intelligence"
+description = "Comprehensive data analytics and business intelligence expertise"
+expertise_level = "Advanced"
+key_areas = [
+    "Business Intelligence",
+    "Reporting Automation",
+    "Data Pipelines",
+    "Performance Analytics",
+    "Stakeholder Reporting"
+]
+achievements = [
+    "Reduced manual reporting time by 50%",
+    "Built automated ETL pipelines",
+    "Delivered real-time performance insights"
+]

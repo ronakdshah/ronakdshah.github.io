@@ -1,132 +1,2262 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Ronak D. Shah - Portfolio</title>
-    <link rel="stylesheet" href="static/main.css">
+    <meta name="description" content="Backend Engineer with 2+ years of experience in scalable systems and 5+ years in ML/data. Proven fintech impact through automation, tooling, and risk modeling.">
+    <meta property="og:title" content="Ronak D. Shah - Portfolio">
+    <meta property="og:description" content="Backend Engineer with 2+ years of experience in scalable systems and 5+ years in ML/data. Proven fintech impact through automation, tooling, and risk modeling.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ronak D. Shah - Portfolio">
+    <meta name="twitter:description" content="Backend Engineer with 2+ years of experience in scalable systems and 5+ years in ML/data. Proven fintech impact through automation, tooling, and risk modeling.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #f9fafb;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f3f4f6;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --text-tertiary: #9ca3af;
+            --border-color: #e5e7eb;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .dark {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-tertiary: #374151;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-tertiary: #9ca3af;
+            --border-color: #374151;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            --gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .gradient-bg {
+            background: var(--gradient-primary);
+        }
+        
+        .hero-gradient {
+            background: var(--gradient-primary);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .tool-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .tool-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        .tool-icon:hover::before {
+            left: 100%;
+        }
+        .tool-icon:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px var(--shadow-color);
+        }
+        
+        .contact-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+        .contact-link:hover::after {
+            width: 100%;
+        }
+        .contact-link:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .experience-card {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+        
+        .experience-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .experience-details.expanded {
+            max-height: 800px;
+        }
+        
+        .expand-button {
+            transition: all 0.3s ease;
+        }
+        .expand-button:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 50%;
+        }
+        .expand-button.expanded {
+            transform: rotate(180deg);
+        }
+        
+        .timeline-line {
+            position: relative;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        .skill-progress {
+            background: var(--gradient-primary);
+            height: 6px;
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+        
+        .floating-action {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .floating-action:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+        }
+
+        /* Dark mode specific styles */
+        .dark .bg-white {
+            background-color: var(--bg-secondary);
+        }
+        
+        .dark .text-gray-900 {
+            color: var(--text-primary);
+        }
+        
+        .dark .text-gray-700 {
+            color: var(--text-secondary);
+        }
+        
+        .dark .text-gray-600 {
+            color: var(--text-secondary);
+        }
+        
+        .dark .text-gray-500 {
+            color: var(--text-tertiary);
+        }
+        
+        .dark .border-gray-100 {
+            border-color: var(--border-color);
+        }
+        
+        .dark .bg-gray-50 {
+            background-color: var(--bg-tertiary);
+        }
+        
+        .dark .bg-gray-100 {
+            background-color: var(--bg-tertiary);
+        }
+        
+        .dark .shadow-lg {
+            box-shadow: 0 10px 15px -3px var(--shadow-color);
+        }
+        
+        .dark .shadow-xl {
+            box-shadow: 0 20px 25px -5px var(--shadow-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-gradient {
+                background: var(--gradient-primary);
+            }
+        }
+    </style>
 </head>
-<body>
-    <div class="header">
-        <h1>Ronak D. Shah</h1>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 min-h-screen">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg z-50 border-b border-gray-200/50 dark:border-gray-700/50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    RS
+                </div>
+                <span class="text-lg font-semibold text-gray-800 dark:text-gray-200 hidden sm:block">Ronak</span>
+            </div>
+            <nav class="flex items-center space-x-6 md:space-x-8">
+                <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium relative group">
+                    About
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#work" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium relative group">
+                    Work
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium relative group">
+                    Contact
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <button id="theme-toggle" class="theme-toggle p-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                    <i class="fas fa-sun text-lg" id="sun-icon"></i>
+                    <i class="fas fa-moon text-lg hidden" id="moon-icon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-12">
+        
+    <!-- Accessibility Enhancements -->
+<!-- Skip to main content link -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-purple-600 text-white px-4 py-2 rounded-lg z-50">
+    Skip to main content
+</a>
+
+<!-- Focus indicator styles -->
+<style>
+    /* Custom focus indicators */
+    .focus-visible:focus {
+        outline: 2px solid #8b5cf6;
+        outline-offset: 2px;
+    }
+    
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .gradient-bg {
+            background: #000 !important;
+        }
+        
+        .text-gray-600 {
+            color: #000 !important;
+        }
+        
+        .border-gray-200 {
+            border-color: #000 !important;
+        }
+    }
+    
+    /* Screen reader only content */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+</style>
+
+<!-- Keyboard navigation enhancements -->
+<script>
+    // Enhanced keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        // Escape key to close modals or expanded sections
+        if (e.key === 'Escape') {
+            const expandedSections = document.querySelectorAll('.experience-details.expanded');
+            expandedSections.forEach(section => {
+                const index = section.id.replace('experience-', '');
+                toggleExperience(parseInt(index));
+            });
+        }
+        
+        // Tab key navigation improvements
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+        }
+    });
+    
+    // Remove keyboard navigation class on mouse use
+    document.addEventListener('mousedown', function() {
+        document.body.classList.remove('keyboard-navigation');
+    });
+    
+    // Add ARIA labels and roles
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add ARIA labels to interactive elements
+        const skillTabs = document.querySelectorAll('.skill-tab');
+        skillTabs.forEach((tab, index) => {
+            tab.setAttribute('role', 'tab');
+            tab.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+            tab.setAttribute('aria-controls', `panel-${index + 1}`);
+        });
+        
+        const skillContents = document.querySelectorAll('.skill-content');
+        skillContents.forEach((content, index) => {
+            content.setAttribute('role', 'tabpanel');
+            content.setAttribute('aria-labelledby', `tab-${index + 1}`);
+            content.setAttribute('id', `panel-${index + 1}`);
+        });
+        
+        // Add ARIA labels to expandable sections
+        const expandButtons = document.querySelectorAll('.expand-button');
+        expandButtons.forEach((button, index) => {
+            button.setAttribute('aria-expanded', 'false');
+            button.setAttribute('aria-controls', `experience-${index}`);
+            button.setAttribute('aria-label', `Toggle experience details for position ${index + 1}`);
+        });
+        
+        // Add ARIA labels to contact links
+        const contactLinks = document.querySelectorAll('.contact-link');
+        contactLinks.forEach(link => {
+            const text = link.textContent;
+            if (text.includes('@')) {
+                link.setAttribute('aria-label', `Send email to ${text}`);
+            } else if (text.includes('linkedin.com')) {
+                link.setAttribute('aria-label', 'Visit LinkedIn profile');
+            } else if (text.includes('github.com')) {
+                link.setAttribute('aria-label', 'Visit GitHub profile');
+            }
+        });
+        
+        // Add ARIA labels to theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.setAttribute('aria-label', 'Toggle dark mode');
+            themeToggle.setAttribute('role', 'button');
+        }
+        
+        // Add ARIA labels to floating action button
+        const floatingAction = document.querySelector('.floating-action a');
+        if (floatingAction) {
+            floatingAction.setAttribute('aria-label', 'Contact me via email');
+        }
+    });
+    
+    // Live region for dynamic content
+    const liveRegion = document.createElement('div');
+    liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.setAttribute('aria-atomic', 'true');
+    liveRegion.className = 'sr-only';
+    document.body.appendChild(liveRegion);
+    
+    // Announce theme changes
+    window.addEventListener('themeChanged', function(e) {
+        const theme = e.detail.theme;
+        liveRegion.textContent = `Switched to ${theme} mode`;
+    });
+    
+    // Announce skill tab changes
+    function announceSkillTabChange(category) {
+        liveRegion.textContent = `Switched to ${category} skills view`;
+    }
+</script> 
+    <main id="main-content">
+        <!-- Hero Section -->
+<section id="about" class="relative overflow-hidden">
+    <!-- Background -->
+    <div class="hero-gradient absolute inset-0"></div>
+    <div class="absolute inset-0 bg-black/10"></div>
+    
+    <!-- Content -->
+    <div class="relative max-w-6xl mx-auto px-6 py-20 md:py-32">
+        <div class="text-center text-white">
+            <!-- Greeting -->
+            <div class="mb-6 fade-in">
+                <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium border border-white/30">
+                    👋 Hello, I'm
+                </span>
+            </div>
+            
+            <!-- Name -->
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in" style="animation-delay: 0.2s;">
+                Ronak D. Shah
+            </h1>
+            
+            <!-- Title -->
+            <div class="mb-8 fade-in" style="animation-delay: 0.4s;">
+                <h2 class="text-2xl md:text-3xl font-light mb-4 opacity-90">
+                    Backend Engineer
+                </h2>
+                <div class="flex flex-wrap justify-center gap-2 text-sm">
+                    <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">Scalable Systems</span>
+                    <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">ML/Data</span>
+                    <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">Fintech</span>
+                </div>
+            </div>
+            
+            <!-- Summary -->
+            <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto leading-relaxed opacity-90 fade-in" style="animation-delay: 0.6s;">
+                Backend Engineer with 2+ years of experience in scalable systems and 5+ years in ML/data. Proven fintech impact through automation, tooling, and risk modeling.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center fade-in" style="animation-delay: 0.8s;">
+                <a href="#work" class="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <i class="fas fa-briefcase mr-3"></i>
+                    View My Work
+                </a>
+                <a href="#contact" class="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-purple-600 transition-all duration-300 hover:scale-105">
+                    <i class="fas fa-envelope mr-3"></i>
+                    Get In Touch
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="container">
-        
-    <div class="section">
-    <h2>Summary</h2>
-    <p>Backend Engineer with 2+ years of experience in scalable systems and 5+ years in ML/data. Proven fintech impact through automation, tooling, and risk modeling.</p>
-</div>
-    <div class="section">
-    <h2>Experience</h2>
     
-    <h3>MerQube Inc - Software Engineer - Backend (Jun 2023 -- Present)</h3>
-    <ul>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in" style="animation-delay: 1s;">
+        <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center slide-in-left">
+                <div class="text-4xl font-bold text-purple-600 mb-2">2+</div>
+                <div class="text-gray-600 font-medium">Years Backend Experience</div>
+            </div>
+            <div class="text-center fade-in">
+                <div class="text-4xl font-bold text-purple-600 mb-2">5+</div>
+                <div class="text-gray-600 font-medium">Years ML/Data Experience</div>
+            </div>
+            <div class="text-center slide-in-right">
+                <div class="text-4xl font-bold text-purple-600 mb-2">100%</div>
+                <div class="text-gray-600 font-medium">Fintech Impact</div>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- Experience Section -->
+<section id="work" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Professional Experience</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">A journey through impactful roles in fintech and data science</p>
+        </div>
         
-        <li><strong>Async Portfolio API:</strong> Architected async Python API for validating 100+ portfolios/day; enabled $600k ARR by automating index portfolio management</li>
+        <!-- Search and Filter Component -->
+        <!-- Search and Filter Component -->
+<div class="search-filter-container bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 mb-8">
+    <div class="flex flex-col md:flex-row gap-4 items-center">
+        <!-- Search Input -->
+        <div class="flex-1 w-full">
+            <div class="relative">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Search experience, skills, or projects..." 
+                    class="w-full px-4 py-3 pl-12 pr-20 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                >
+                <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                <button id="search-button" class="absolute right-2 top-1/2 transform -translate-y-1/2 px-3 py-1 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm font-medium">
+                    Search
+                </button>
+            </div>
+        </div>
         
-        <li><strong>Index Platform API:</strong> Designed and scaled production-grade FastAPI backend on K8s, improving developer and operations experience on working with index code</li>
-        
-        <li><strong>Real Time System:</strong> Led real-time infra upgrades using time-based autoscaling and safe rollovers, improving system uptime and reducing deployment costs</li>
-        
-        <li><strong>File Monitoring Service:</strong> Built resilient file monitor service with user-defined workflows and integrated prometheus metrics and Grafana alerts, adding $100k in ARR</li>
-        
-        <li><strong>Multi Asset Framework:</strong> Engineered object oriented framework with abstract interfaces and modular components for multi-asset indices; enabled reusable, type-safe index development</li>
-        
-        <li><strong>Index Reporting Engine:</strong> Engineered scalable, standardized reporting pipeline for 6,800+ indices. Implemented robust data validation using pydantic to ensure accuracy and reliability</li>
-        
-        <li><strong>Self-Service Index API:</strong> Delivered client-facing API for index creation and backtesting; enabled near real-time onboarding of custom index strategies</li>
-        
-    </ul>
+        <!-- Clear Filters -->
+        <button id="clear-filters" class="px-4 py-3 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-500 transition-all duration-300 font-medium">
+            Clear
+        </button>
+    </div>
     
-    <h3>Affirm Inc - Software Engineer - Quantitative Risk (Oct 2021 -- May 2023)</h3>
-    <ul>
-        
-        <li><strong>Merchant Risk API:</strong> Built and productionized a CatBoost-based API for real-time risk exposure estimation; improved loss accuracy by 20%</li>
-        
-        <li><strong>Onboarding Risk Model:</strong> Designed a GBM-based fraud detection model reducing onboarding-related fraud by 10%; integrated seamlessly with merchant approval pipeline</li>
-        
-        <li><strong>Graph-based Fraud Detection:</strong> Applied graph analytics to identify suspicious merchant clusters; led to a 4% reduction in financial loss</li>
-        
-    </ul>
-    
-    <h3>FedEx Ground Inc - Software Engineer - Data Science (Jul 2020 -- Sep 2021)</h3>
-    <ul>
-        
-        <li><strong>CFO Reporting Automation:</strong> Built automated dashboards reducing manual reporting time by 50%; ensured reliability and on-time delivery of performance insights</li>
-        
-        <li><strong>Weekly Metrics Pipeline:</strong> Designed a repeatable ETL pipeline for delivering weekly operations reports to stakeholders with improved data freshness</li>
-        
-    </ul>
-    
-</div>
-    <div class="section">
-    <h2>Projects</h2>
-    <h3>Portfolio Optimization</h3>
-    <ul>
-        
-        <li>Built a Flask-based tool with Clickhouse and CI/CD for portfolio optimization</li>
-        
-        
-        <li>Published research paper <em>A unified framework for fast large-scale portfolio optimization</em> <a href="https://arxiv.org/abs/2303.12751">Link</a>.</li>
-        
-    </ul>
-</div>
-    <div class="section">
-    <h2>Awards &amp; Achievements</h2>
-    <ul>
-        <li>Award of Honor for Outstanding Academic Excellence in AMS, Stony Brook University.</li>
-        <li>Graduate Certificate in Quantitative Finance from AMS, Stony Brook University.</li>
-        <li>Published research paper <em>A unified framework for fast large-scale portfolio optimization</em> <a
-                href="https://arxiv.org/abs/2303.12751">Link</a>.</li>
-    </ul>
-</div>
-    <div class="section">
-    <h2>Education</h2>
-    
-    <p><strong>MS Applied Math and Stats , Stony Brook University</strong> (GPA: 3.95/4) - Aug 2019 - May 2021</p>
-    
-    <p><strong>Bachelor of Technology , SVNIT Surat</strong> (GPA: 8.51/10) - Jul 2012 - May 2016</p>
-    
-</div>
-    <div class="section">
-    <h2>Skills</h2>
-    <ul>
-        
-        <li><strong>Languages:</strong> Python, Go, SQL, JavaScript</li>
-        
-        <li><strong>Frameworks / Backend:</strong> Flask, Pydantic, Clickhouse, FastAPI</li>
-        
-        <li><strong>Infrastructure:</strong> Docker, AWS, Ansible, Git, OpenLens, Kubectl</li>
-        
-        <li><strong>ML \& Data:</strong> Tree Models, Convex Optimization, Graph Algorithms, Data Pipelines</li>
-        
-    </ul>
+    <!-- Active Filters Display -->
+    <div id="active-filters" class="mt-4 flex flex-wrap gap-2 hidden">
+        <!-- Active filters will be dynamically added here -->
+    </div>
 </div>
 
-    </div>
-    <div class="contact">
-        San Francisco, CA • <a href="mailto:roshah2023@gmail.com">roshah2023@gmail.com</a> • (412) - 447 - 1666 •
-<a href="http://www.linkedin.com/in/ronakshah52">LinkedIn</a>
-    </div>
+<script>
+    class SearchFilterManager {
+        constructor() {
+            this.searchInput = document.getElementById('search-input');
+            this.searchButton = document.getElementById('search-button');
+            this.clearButton = document.getElementById('clear-filters');
+            this.activeFiltersContainer = document.getElementById('active-filters');
+            
+            this.searchTerm = '';
+            this.init();
+        }
         
+        init() {
+            this.setupEventListeners();
+            this.setupKeyboardShortcuts();
+            this.setupDataAttributes();
+        }
+        
+        setupEventListeners() {
+            // Search button click
+            this.searchButton.addEventListener('click', () => {
+                this.performSearch();
+            });
+            
+            // Clear filters
+            this.clearButton.addEventListener('click', () => {
+                this.clearSearch();
+            });
+        }
+        
+        setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + K to focus search
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    this.searchInput.focus();
+                }
+                
+                // Enter key to perform search
+                if (e.key === 'Enter' && document.activeElement === this.searchInput) {
+                    e.preventDefault();
+                    this.performSearch();
+                }
+                
+                // Escape to clear search
+                if (e.key === 'Escape' && document.activeElement === this.searchInput) {
+                    this.searchInput.value = '';
+                    this.searchTerm = '';
+                    this.clearSearch();
+                }
+            });
+        }
+        
+        setupDataAttributes() {
+            // Add data attributes to experience cards
+            document.querySelectorAll('.experience-card').forEach((card, index) => {
+                const title = card.querySelector('h3')?.textContent || '';
+                const company = card.querySelector('.text-purple-600')?.textContent || '';
+                const description = card.querySelector('.text-gray-700')?.textContent || '';
+                
+                // Combine all text content for searching
+                const searchText = `${title} ${company} ${description}`.toLowerCase();
+                card.setAttribute('data-search', searchText);
+            });
+            
+            // Add data attributes to skill cards
+            document.querySelectorAll('.tool-icon').forEach(card => {
+                const title = card.querySelector('h4')?.textContent || '';
+                const description = card.querySelector('p')?.textContent || '';
+                const searchText = `${title} ${description}`.toLowerCase();
+                card.setAttribute('data-search', searchText);
+            });
+            
+            // Add data attributes to project cards
+            document.querySelectorAll('.bg-white.rounded-2xl').forEach(card => {
+                const title = card.querySelector('h4')?.textContent || '';
+                const description = card.querySelector('p')?.textContent || '';
+                const tags = Array.from(card.querySelectorAll('span')).map(tag => tag.textContent).join(' ');
+                const searchText = `${title} ${description} ${tags}`.toLowerCase();
+                card.setAttribute('data-search', searchText);
+            });
+        }
+        
+        performSearch() {
+            this.searchTerm = this.searchInput.value.toLowerCase().trim();
+            this.applySearch();
+        }
+        
+        applySearch() {
+            const searchableElements = document.querySelectorAll('[data-search]');
+            let visibleCount = 0;
+            
+            searchableElements.forEach(element => {
+                const searchText = element.getAttribute('data-search') || '';
+                const shouldShow = !this.searchTerm || searchText.includes(this.searchTerm);
+                
+                if (shouldShow) {
+                    element.style.display = '';
+                    element.classList.remove('filtered-out');
+                    element.classList.add('filtered-in');
+                    visibleCount++;
+                } else {
+                    element.style.display = 'none';
+                    element.classList.add('filtered-out');
+                    element.classList.remove('filtered-in');
+                }
+            });
+            
+            this.updateActiveFilters();
+            this.updateResultsCount(visibleCount, searchableElements.length);
+        }
+        
+        updateActiveFilters() {
+            if (this.searchTerm) {
+                this.activeFiltersContainer.innerHTML = 
+                    `<span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Search: "${this.searchTerm}"</span>`;
+                this.activeFiltersContainer.classList.remove('hidden');
+            } else {
+                this.activeFiltersContainer.classList.add('hidden');
+            }
+        }
+        
+        updateResultsCount(visibleCount, totalCount) {
+            if (this.searchTerm) {
+                this.searchInput.placeholder = `Found ${visibleCount} of ${totalCount} items...`;
+            } else {
+                this.searchInput.placeholder = 'Search experience, skills, or projects...';
+            }
+        }
+        
+        clearSearch() {
+            this.searchTerm = '';
+            this.searchInput.value = '';
+            
+            // Show all elements
+            document.querySelectorAll('[data-search]').forEach(element => {
+                element.style.display = '';
+                element.classList.remove('filtered-out', 'filtered-in');
+            });
+            
+            this.updateActiveFilters();
+            this.updateResultsCount(0, 0);
+            
+            // Focus search input
+            this.searchInput.focus();
+        }
+    }
+    
+    // Initialize search filter manager when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        new SearchFilterManager();
+    });
+</script>
+
+<style>
+    .filtered-out {
+        opacity: 0.3;
+        transform: scale(0.95);
+        transition: all 0.3s ease;
+    }
+    
+    .filtered-in {
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.3s ease;
+    }
+    
+    /* Search input focus animation */
+    #search-input:focus {
+        transform: scale(1.02);
+    }
+    
+    /* Active filter tags animation */
+    #active-filters span {
+        animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style> 
+        
+        <!-- Experience Timeline -->
+        <div class="relative">
+            <!-- Timeline Line -->
+            <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-600 to-blue-600 rounded-full"></div>
+            
+            <!-- Experience Items -->
+            <div class="space-y-12">
+                
+                <div class="experience-card relative flex items-start space-x-8 group">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full border-4 border-white dark:border-gray-800 shadow-lg z-10"></div>
+                    
+                    <!-- Content Card -->
+                    <div class="ml-16 md:ml-0 md:w-1/2 md:mr-auto md:pr-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                            <!-- Job Header -->
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Software Engineer - Backend</h3>
+                                    <p class="text-purple-600 dark:text-purple-400 font-semibold text-lg">MerQube Inc</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">Jun 2023 -- Present</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Job Description -->
+                            <p class="text-gray-700 dark:text-gray-300 mb-6">Leading development of scalable systems and innovative solutions in fintech and data science.</p>
+                            
+                            <!-- Expandable Details -->
+                            
+                            <button onclick="toggleExperience(0)" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 group">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">View Details</span>
+                                <i class="fas fa-chevron-down expand-button text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+                            </button>
+                            
+                            <!-- Hidden Details -->
+                            <div id="experience-0" class="experience-details mt-4 space-y-4">
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Async Portfolio API</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Architected async Python API for validating 100+ portfolios/day; enabled $600k ARR by automating index portfolio management</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Index Platform API</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Designed and scaled production-grade FastAPI backend on K8s, improving developer and operations experience on working with index code</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Real Time System</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Led real-time infra upgrades using time-based autoscaling and safe rollovers, improving system uptime and reducing deployment costs</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">File Monitoring Service</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Built resilient file monitor service with user-defined workflows and integrated prometheus metrics and Grafana alerts, adding $100k in ARR</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Multi Asset Framework</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Engineered object oriented framework with abstract interfaces and modular components for multi-asset indices; enabled reusable, type-safe index development</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Index Reporting Engine</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Engineered scalable, standardized reporting pipeline for 6,800+ indices. Implemented robust data validation using pydantic to ensure accuracy and reliability</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Self-Service Index API</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Delivered client-facing API for index creation and backtesting; enabled near real-time onboarding of custom index strategies</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <!-- Skills Used -->
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-3">Technologies & Skills</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Python</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">SQL</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Kubernetes</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">ML</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">DevOps</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-card relative flex items-start space-x-8 group">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full border-4 border-white dark:border-gray-800 shadow-lg z-10"></div>
+                    
+                    <!-- Content Card -->
+                    <div class="ml-16 md:ml-0 md:w-1/2 md:ml-auto md:pl-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                            <!-- Job Header -->
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Software Engineer - Quantitative Risk</h3>
+                                    <p class="text-purple-600 dark:text-purple-400 font-semibold text-lg">Affirm Inc</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">Oct 2021 -- May 2023</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Job Description -->
+                            <p class="text-gray-700 dark:text-gray-300 mb-6">Leading development of scalable systems and innovative solutions in fintech and data science.</p>
+                            
+                            <!-- Expandable Details -->
+                            
+                            <button onclick="toggleExperience(1)" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 group">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">View Details</span>
+                                <i class="fas fa-chevron-down expand-button text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+                            </button>
+                            
+                            <!-- Hidden Details -->
+                            <div id="experience-1" class="experience-details mt-4 space-y-4">
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Merchant Risk API</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Built and productionized a CatBoost-based API for real-time risk exposure estimation; improved loss accuracy by 20%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Onboarding Risk Model</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Designed a GBM-based fraud detection model reducing onboarding-related fraud by 10%; integrated seamlessly with merchant approval pipeline</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Graph-based Fraud Detection</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Applied graph analytics to identify suspicious merchant clusters; led to a 4% reduction in financial loss</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <!-- Skills Used -->
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-3">Technologies & Skills</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Python</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">SQL</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Kubernetes</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">ML</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">DevOps</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-card relative flex items-start space-x-8 group">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full border-4 border-white dark:border-gray-800 shadow-lg z-10"></div>
+                    
+                    <!-- Content Card -->
+                    <div class="ml-16 md:ml-0 md:w-1/2 md:mr-auto md:pr-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                            <!-- Job Header -->
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Software Engineer - Data Science</h3>
+                                    <p class="text-purple-600 dark:text-purple-400 font-semibold text-lg">FedEx Ground Inc</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">Jul 2020 -- Sep 2021</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Job Description -->
+                            <p class="text-gray-700 dark:text-gray-300 mb-6">Leading development of scalable systems and innovative solutions in fintech and data science.</p>
+                            
+                            <!-- Expandable Details -->
+                            
+                            <button onclick="toggleExperience(2)" class="w-full flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 group">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">View Details</span>
+                                <i class="fas fa-chevron-down expand-button text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+                            </button>
+                            
+                            <!-- Hidden Details -->
+                            <div id="experience-2" class="experience-details mt-4 space-y-4">
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">CFO Reporting Automation</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Built automated dashboards reducing manual reporting time by 50%; ensured reliability and on-time delivery of performance insights</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                        <div>
+                                            <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Weekly Metrics Pipeline</h4>
+                                            <p class="text-gray-700 dark:text-gray-300 text-sm">Designed a repeatable ETL pipeline for delivering weekly operations reports to stakeholders with improved data freshness</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <!-- Skills Used -->
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4">
+                                    <h4 class="font-medium text-gray-900 dark:text-gray-100 mb-3">Technologies & Skills</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Python</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">SQL</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Kubernetes</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">ML</span>
+                                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">DevOps</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="text-center mt-16">
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">Ready to Collaborate?</h3>
+                <p class="text-purple-100 mb-6">Let's discuss how my experience can benefit your next project</p>
+                <a href="#contact" class="inline-flex items-center px-8 py-3 bg-white text-purple-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <i class="fas fa-paper-plane mr-3"></i>
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- Skills & Tools Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Skills & Technologies</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">A comprehensive toolkit for building scalable, data-driven applications</p>
+        </div>
+        
+        <!-- Skill Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="skill-tab active px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300" data-category="core">
+                Core Technologies
+            </button>
+            <button class="skill-tab px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-full hover:bg-gray-200 transition-all duration-300" data-category="technical">
+                Technical Expertise
+            </button>
+            <button class="skill-tab px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-full hover:bg-gray-200 transition-all duration-300" data-category="domain">
+                Domain Knowledge
+            </button>
+        </div>
+        
+        <!-- Core Tools -->
+        <div id="core" class="skill-content active mb-16">
+            <h3 class="text-2xl font-bold text-gray-900 text-center mb-12">Core Technologies</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="tool-icon bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 text-center border border-blue-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fab fa-python text-white text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Python</h4>
+                    <p class="text-gray-600 text-sm">Backend development, data science, and automation</p>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="skill-progress rounded-full h-2" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div class="tool-icon bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center border border-green-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-database text-white text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">SQL</h4>
+                    <p class="text-gray-600 text-sm">Database design, optimization, and analytics</p>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="skill-progress rounded-full h-2" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="tool-icon bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 text-center border border-purple-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-cube text-white text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Kubernetes</h4>
+                    <p class="text-gray-600 text-sm">Container orchestration and cloud infrastructure</p>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="skill-progress rounded-full h-2" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Skills -->
+        <div id="technical" class="skill-content hidden">
+            <h3 class="text-2xl font-bold text-gray-900 text-center mb-12">Technical Expertise</h3>
+            <div class="max-w-4xl mx-auto space-y-6">
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">Backend Development</h4>
+                        <span class="text-sm text-gray-500">95%</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Expert-level backend development with focus on scalable APIs and microservices</p>
+                    <div class="bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="skill-progress rounded-full h-3" style="width: 95%"></div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Technologies:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">FastAPI</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Flask</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Django</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Pydantic</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">SQLAlchemy</span>
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Achievements:</h5>
+                        <ul class="space-y-1">
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Built production APIs handling 100+ portfolios/day</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Scaled FastAPI backend on Kubernetes</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Implemented async processing for real-time data</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">Data Science & ML</h4>
+                        <span class="text-sm text-gray-500">90%</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Advanced machine learning and data science with focus on fintech applications</p>
+                    <div class="bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="skill-progress rounded-full h-3" style="width: 90%"></div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Technologies:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">CatBoost</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">GBM</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Graph Analytics</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Scikit-learn</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Pandas</span>
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Achievements:</h5>
+                        <ul class="space-y-1">
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Improved risk model accuracy by 20%</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Reduced fraud by 10% with ML models</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Applied graph analytics for fraud detection</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">Cloud Infrastructure</h4>
+                        <span class="text-sm text-gray-500">85%</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Comprehensive cloud infrastructure and DevOps expertise</p>
+                    <div class="bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="skill-progress rounded-full h-3" style="width: 85%"></div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Technologies:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">AWS</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Docker</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Kubernetes</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Ansible</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Prometheus</span>
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Achievements:</h5>
+                        <ul class="space-y-1">
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Implemented time-based autoscaling</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Reduced deployment costs with infrastructure optimization</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Built resilient monitoring systems</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">DevOps & CI/CD</h4>
+                        <span class="text-sm text-gray-500">80%</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Modern DevOps practices and continuous integration/deployment</p>
+                    <div class="bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="skill-progress rounded-full h-3" style="width: 80%"></div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Technologies:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Git</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">CI/CD</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Monitoring</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Grafana</span>
+                            
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Prometheus</span>
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Achievements:</h5>
+                        <ul class="space-y-1">
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Automated deployment pipelines</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Integrated comprehensive monitoring</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Improved system uptime and reliability</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Domain Knowledge -->
+        <div id="domain" class="skill-content hidden">
+            <h3 class="text-2xl font-bold text-gray-900 text-center mb-12">Domain Knowledge</h3>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">Fintech & Quantitative Finance</h4>
+                        <span class="px-3 py-1 bg-purple-600 text-white rounded-full text-sm font-medium">Expert</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Deep expertise in financial technology and quantitative modeling</p>
+                    
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Areas:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Portfolio Optimization</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Risk Modeling</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Index Management</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Financial APIs</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Real-time Trading Systems</span>
+                            
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Notable Achievements:</h5>
+                        <ul class="space-y-1">
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Generated $600k ARR through portfolio automation</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Managed 6,800+ indices with automated reporting</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Built real-time risk exposure estimation systems</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">Machine Learning & AI</h4>
+                        <span class="px-3 py-1 bg-purple-600 text-white rounded-full text-sm font-medium">Advanced</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Advanced machine learning with focus on practical business applications</p>
+                    
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Areas:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Predictive Modeling</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Fraud Detection</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Graph Analytics</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Automated Decision Systems</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Model Productionization</span>
+                            
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Notable Achievements:</h5>
+                        <ul class="space-y-1">
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Deployed ML models in production environments</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Applied graph algorithms for fraud detection</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Built automated risk assessment systems</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">Scalable Systems Architecture</h4>
+                        <span class="px-3 py-1 bg-purple-600 text-white rounded-full text-sm font-medium">Expert</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Expertise in designing and building high-performance, scalable systems</p>
+                    
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Areas:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Microservices Architecture</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">High-Performance APIs</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Distributed Systems</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Real-time Processing</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">System Optimization</span>
+                            
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Notable Achievements:</h5>
+                        <ul class="space-y-1">
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Architected async portfolio validation systems</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Scaled APIs to handle high-throughput workloads</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Implemented resilient file monitoring services</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">Data Analytics & Business Intelligence</h4>
+                        <span class="px-3 py-1 bg-purple-600 text-white rounded-full text-sm font-medium">Advanced</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Comprehensive data analytics and business intelligence expertise</p>
+                    
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Areas:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Business Intelligence</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Reporting Automation</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Data Pipelines</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Performance Analytics</span>
+                            
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">Stakeholder Reporting</span>
+                            
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Notable Achievements:</h5>
+                        <ul class="space-y-1">
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Reduced manual reporting time by 50%</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Built automated ETL pipelines</span>
+                            </li>
+                            
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">Delivered real-time performance insights</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Key Achievements Summary -->
+            <div class="mt-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+                <h4 class="text-2xl font-bold mb-6 text-center">Key Achievements</h4>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">$600k</div>
+                        <div class="text-purple-100">ARR Generated</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">20%</div>
+                        <div class="text-purple-100">Accuracy Improvement</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">6,800+</div>
+                        <div class="text-purple-100">Indices Managed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</section>
+        <!-- Projects Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Innovative solutions and research that demonstrate my technical expertise</p>
+        </div>
+        
+        <!-- Main Project -->
+        
+        <div class="mb-16">
+            <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 md:p-12 border border-purple-100">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Project Info -->
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
+                                <i class="fas fa-rocket text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Portfolio Optimization</h3>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <p class="text-gray-700">Built a Flask-based tool with Clickhouse and CI/CD for portfolio optimization</p>
+                            </div>
+                            
+                        </div>
+                        
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-white/80 rounded-full text-sm font-medium text-purple-600">Flask</span>
+                            <span class="px-3 py-1 bg-white/80 rounded-full text-sm font-medium text-purple-600">Clickhouse</span>
+                            <span class="px-3 py-1 bg-white/80 rounded-full text-sm font-medium text-purple-600">CI/CD</span>
+                            <span class="px-3 py-1 bg-white/80 rounded-full text-sm font-medium text-purple-600">Portfolio Optimization</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Research Paper -->
+                    
+                    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-file-alt text-white text-2xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-3">Research Publication</h4>
+                            <p class="text-gray-600 text-sm mb-6">A unified framework for fast large-scale portfolio optimization</p>
+                            <a href="https://arxiv.org/abs/2303.12751" target="_blank" 
+                               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Read Paper
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Additional Projects Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project Card 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-chart-line text-white text-xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Risk Modeling API</h4>
+                <p class="text-gray-600 text-sm mb-4">CatBoost-based API for real-time risk exposure estimation with 20% improved accuracy</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">CatBoost</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">API</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">ML</span>
+                </div>
+            </div>
+            
+            <!-- Project Card 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-network-wired text-white text-xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Graph Analytics</h4>
+                <p class="text-gray-600 text-sm mb-4">Graph-based fraud detection system identifying suspicious merchant clusters</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Graph Analytics</span>
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Fraud Detection</span>
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">Python</span>
+                </div>
+            </div>
+            
+            <!-- Project Card 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-tachometer-alt text-white text-xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3">Real-time Infrastructure</h4>
+                <p class="text-gray-600 text-sm mb-4">Time-based autoscaling and safe rollovers improving system uptime</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">Kubernetes</span>
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">Autoscaling</span>
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">DevOps</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="text-center mt-16">
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">Interested in My Work?</h3>
+                <p class="text-purple-100 mb-6">Let's discuss how I can help bring your next project to life</p>
+                <a href="#contact" class="inline-flex items-center px-8 py-3 bg-white text-purple-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <i class="fas fa-paper-plane mr-3"></i>
+                    Start a Conversation
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- Education Section -->
+<section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Education & Credentials</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Academic foundation that drives my technical expertise and problem-solving approach</p>
+        </div>
+        
+        <!-- Education Cards -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                <!-- Degree Icon -->
+                <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+                
+                <!-- Degree Info -->
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">MS Applied Math and Stats</h3>
+                    <p class="text-purple-600 font-semibold text-lg mb-3">Stony Brook University</p>
+                    
+                    <!-- Duration & GPA -->
+                    <div class="flex justify-center items-center space-x-6 mb-6">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">Duration</p>
+                            <p class="font-medium text-gray-900">Aug 2019 - May 2021</p>
+                        </div>
+                        <div class="w-px h-8 bg-gray-300"></div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">GPA</p>
+                            <p class="font-medium text-gray-900">3.95/4</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Achievement Badge -->
+                    
+                    <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-blue-100 rounded-full">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Academic Excellence</span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                <!-- Degree Icon -->
+                <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+                
+                <!-- Degree Info -->
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Bachelor of Technology</h3>
+                    <p class="text-purple-600 font-semibold text-lg mb-3">SVNIT Surat</p>
+                    
+                    <!-- Duration & GPA -->
+                    <div class="flex justify-center items-center space-x-6 mb-6">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">Duration</p>
+                            <p class="font-medium text-gray-900">Jul 2012 - May 2016</p>
+                        </div>
+                        <div class="w-px h-8 bg-gray-300"></div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500">GPA</p>
+                            <p class="font-medium text-gray-900">8.51/10</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Achievement Badge -->
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Awards Section -->
+        
+        <div class="mt-16">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Awards and Achievements</h3>
+                    <div class="w-16 h-1 gradient-bg rounded-full mx-auto"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    
+                    <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl">
+                        <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-trophy text-white text-sm"></i>
+                        </div>
+                        <p class="text-gray-700 font-medium">Award of Honor for Outstanding Academic Excellence in AMS, Stony Brook University</p>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl">
+                        <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-trophy text-white text-sm"></i>
+                        </div>
+                        <p class="text-gray-700 font-medium">Graduate Certificate in Quantitative Finance from AMS, Stony Brook University</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+        <!-- Contact Section -->
+<section id="contact" class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Let's Connect</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">Ready to discuss opportunities or just want to say hello?</p>
+        </div>
+        
+        <!-- Contact Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Email -->
+            <div class="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl p-8 border border-purple-100 dark:border-purple-800 hover:shadow-xl transition-all duration-300 group">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100">Email</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Let's start a conversation</p>
+                    </div>
+                </div>
+                <a href="mailto:roshah2023@gmail.com" class="contact-link text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 transition-colors duration-300">
+                    roshah2023@gmail.com
+                </a>
+            </div>
+            
+            <!-- Location -->
+            <div class="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-2xl p-8 border border-green-100 dark:border-green-800 hover:shadow-xl transition-all duration-300 group">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-map-marker-alt text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100">Location</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Based in</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 font-medium">San Francisco, CA</p>
+            </div>
+            
+            <!-- Phone -->
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border border-blue-100 dark:border-blue-800 hover:shadow-xl transition-all duration-300 group">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-phone text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100">Phone</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Call me anytime</p>
+                    </div>
+                </div>
+                <a href="tel:(412) - 447 - 1666" class="contact-link text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300">
+                    (412) - 447 - 1666
+                </a>
+            </div>
+            
+            <!-- LinkedIn -->
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-2xl p-8 border border-indigo-100 dark:border-indigo-800 hover:shadow-xl transition-all duration-300 group">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100">LinkedIn</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Professional network</p>
+                    </div>
+                </div>
+                <a href="http://www.linkedin.com/in/ronakshah52" target="_blank" rel="noopener noreferrer" class="contact-link text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors duration-300">
+                    Connect on LinkedIn
+                </a>
+            </div>
+            
+            <!-- GitHub (if available) -->
+            
+            
+            <!-- Website -->
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl p-8 border border-orange-100 dark:border-orange-800 hover:shadow-xl transition-all duration-300 group">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-globe text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100">Website</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">More about me</p>
+                    </div>
+                </div>
+                <a href="https://ronakdshah.github.io/" target="_blank" rel="noopener noreferrer" class="contact-link text-orange-600 dark:text-orange-400 font-medium hover:text-orange-700 dark:hover:text-orange-300 transition-colors duration-300">
+                    Visit Website
+                </a>
+            </div>
+        </div>
+        
+        <!-- Quick Contact CTA -->
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 md:p-12 text-white text-center relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-32 h-32 bg-white rounded-full -translate-x-16 -translate-y-16"></div>
+                <div class="absolute bottom-0 right-0 w-24 h-24 bg-white rounded-full translate-x-12 translate-y-12"></div>
+            </div>
+            
+            <div class="relative z-10">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4">Ready to work together?</h3>
+                <p class="text-purple-100 mb-8 text-lg max-w-2xl mx-auto">Let's discuss how I can help bring your ideas to life and create innovative solutions together</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="mailto:roshah2023@gmail.com" class="inline-flex items-center px-8 py-3 bg-white text-purple-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                        <i class="fas fa-paper-plane mr-3"></i>
+                        Send Message
+                    </a>
+                    <a href="http://www.linkedin.com/in/ronakshah52" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-3 bg-purple-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                        <i class="fab fa-linkedin mr-3"></i>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    </main>
+
+    <!-- Floating Action Button -->
+    <div class="floating-action">
+        <a href="#contact" class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300">
+            <i class="fas fa-envelope text-xl"></i>
+        </a>
+    </div>
+
+    
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sections = document.querySelectorAll(".section");
+        // Performance optimizations
+        const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isLowPowerMode = navigator.hardwareConcurrency <= 4;
+        
+        // Theme management
+        class ThemeManager {
+            constructor() {
+                this.theme = localStorage.getItem('theme') || 'light';
+                this.init();
+            }
+            
+            init() {
+                this.applyTheme();
+                this.setupToggle();
+            }
+            
+            applyTheme() {
+                const html = document.documentElement;
+                const sunIcon = document.getElementById('sun-icon');
+                const moonIcon = document.getElementById('moon-icon');
+                
+                if (this.theme === 'dark') {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                } else {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                }
+            }
+            
+            toggle() {
+                this.theme = this.theme === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', this.theme);
+                this.applyTheme();
+                
+                // Trigger custom event for other components
+                window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: this.theme } }));
+            }
+            
+            setupToggle() {
+                const toggle = document.getElementById('theme-toggle');
+                if (toggle) {
+                    toggle.addEventListener('click', () => this.toggle());
+                }
+            }
+        }
+        
+        // Initialize theme manager
+        const themeManager = new ThemeManager();
+        
+        // Enhanced intersection observer with performance optimizations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-            function checkVisibility() {
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top < (window.innerHeight || document.documentElement.clientHeight) * 0.95 && rect.bottom > (window.innerHeight || document.documentElement.clientHeight) * 0.15) {
-                        section.classList.add("visible");
-                    } else {
-                        section.classList.remove("visible");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate skill progress bars with reduced motion support
+                    if (entry.target.querySelector('.skill-progress') && !isReducedMotion) {
+                        const progressBars = entry.target.querySelectorAll('.skill-progress');
+                        progressBars.forEach((bar, index) => {
+                            const width = bar.style.width;
+                            bar.style.width = '0%';
+                            setTimeout(() => {
+                                bar.style.width = width;
+                            }, isLowPowerMode ? 0 : 200 + (index * 50));
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements with lazy loading
+        const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Skill tab functionality with performance optimizations and accessibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillTabs = document.querySelectorAll('.skill-tab');
+            const skillContents = document.querySelectorAll('.skill-content');
+
+            skillTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update tab styles and ARIA attributes
+                    skillTabs.forEach((t, index) => {
+                        t.classList.remove('active', 'bg-gradient-to-r', 'from-purple-600', 'to-blue-600', 'text-white', 'shadow-lg');
+                        t.classList.add('bg-gray-100', 'text-gray-700');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    this.classList.add('active', 'bg-gradient-to-r', 'from-purple-600', 'to-blue-600', 'text-white', 'shadow-lg');
+                    this.classList.remove('bg-gray-100', 'text-gray-700');
+                    this.setAttribute('aria-selected', 'true');
+                    
+                    // Show/hide content with smooth transitions
+                    skillContents.forEach(content => {
+                        content.classList.add('hidden');
+                        content.classList.remove('active');
+                    });
+                    
+                    const targetContent = document.getElementById(category);
+                    if (targetContent) {
+                        targetContent.classList.remove('hidden');
+                        targetContent.classList.add('active');
+                        
+                        // Animate progress bars in the new content
+                        if (!isReducedMotion) {
+                            const progressBars = targetContent.querySelectorAll('.skill-progress');
+                            progressBars.forEach((bar, index) => {
+                                const width = bar.style.width;
+                                bar.style.width = '0%';
+                                setTimeout(() => {
+                                    bar.style.width = width;
+                                }, isLowPowerMode ? 0 : index * 100);
+                            });
+                        }
+                        
+                        // Announce tab change for screen readers
+                        if (typeof announceSkillTabChange === 'function') {
+                            announceSkillTabChange(category);
+                        }
                     }
                 });
-            }
-
-            window.addEventListener("scroll", checkVisibility);
-            checkVisibility();
+            });
         });
+
+        // Experience toggle functionality with enhanced animations and accessibility
+        function toggleExperience(index) {
+            const details = document.getElementById(`experience-${index}`);
+            const button = details.previousElementSibling.querySelector('.expand-button');
+            
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                button.classList.remove('expanded');
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                details.classList.add('expanded');
+                button.classList.add('expanded');
+                button.setAttribute('aria-expanded', 'true');
+                
+                // Add a subtle animation to the content
+                if (!isReducedMotion) {
+                    const items = details.querySelectorAll('.bg-gray-50');
+                    items.forEach((item, i) => {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(10px)';
+                        setTimeout(() => {
+                            item.style.transition = 'all 0.3s ease';
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, isLowPowerMode ? 0 : i * 100);
+                    });
+                }
+            }
+        }
+
+        // Enhanced smooth scrolling with performance optimizations
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    if (isReducedMotion) {
+                        window.scrollTo(0, targetPosition);
+                    } else {
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Focus the target for accessibility
+                    setTimeout(() => {
+                        target.focus();
+                    }, isReducedMotion ? 0 : 500);
+                }
+            });
+        });
+
+        // Optimized number animation with reduced motion support
+        function animateNumbers() {
+            if (isReducedMotion) return;
+            
+            const numbers = document.querySelectorAll('.text-4xl.font-bold.text-purple-600, .text-3xl.font-bold');
+            numbers.forEach(number => {
+                const finalValue = number.textContent;
+                const isPercentage = finalValue.includes('%');
+                const isCurrency = finalValue.includes('$');
+                const isPlus = finalValue.includes('+');
+                const numericValue = parseInt(finalValue.replace(/\D/g, ''));
+                
+                if (numericValue > 0) {
+                    let currentValue = 0;
+                    const increment = numericValue / (isLowPowerMode ? 20 : 50);
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= numericValue) {
+                            currentValue = numericValue;
+                            clearInterval(timer);
+                        }
+                        let displayValue = Math.floor(currentValue);
+                        if (isCurrency) displayValue = '$' + displayValue + 'k';
+                        else if (isPlus) displayValue = displayValue + '+';
+                        else if (isPercentage) displayValue = displayValue + '%';
+                        number.textContent = displayValue;
+                    }, isLowPowerMode ? 50 : 30);
+                }
+            });
+        }
+
+        // Trigger number animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Enhanced hover effects with performance optimizations
+        document.querySelectorAll('.tool-icon, .group').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                if (isReducedMotion) return;
+                
+                if (this.classList.contains('tool-icon')) {
+                    this.style.transform = 'translateY(-8px) scale(1.05)';
+                } else {
+                    this.style.transform = 'translateY(-5px)';
+                }
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Optimized typing effect with reduced motion support
+        function typeWriter(element, text, speed = 100) {
+            if (isReducedMotion) {
+                element.textContent = text;
+                return;
+            }
+            
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, isLowPowerMode ? speed * 2 : speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitle = document.querySelector('#about h1');
+            if (heroTitle && !isReducedMotion) {
+                const originalText = heroTitle.textContent;
+                setTimeout(() => {
+                    typeWriter(heroTitle, originalText, 50);
+                }, 1000);
+            }
+        });
+
+        // Optimized parallax effect with reduced motion support
+        if (!isReducedMotion) {
+            let parallaxTimeout;
+            window.addEventListener('scroll', () => {
+                if (parallaxTimeout) return;
+                
+                parallaxTimeout = setTimeout(() => {
+                    const hero = document.querySelector('#about');
+                    if (hero) {
+                        const scrolled = window.pageYOffset;
+                        const rate = scrolled * -0.5;
+                        hero.style.transform = `translateY(${rate}px)`;
+                    }
+                    parallaxTimeout = null;
+                }, 16);
+            });
+        }
+
+        // Optimized scroll-triggered animations for project cards
+        const projectObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isReducedMotion) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.bg-white.rounded-2xl').forEach(card => {
+            if (!isReducedMotion) {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+            }
+            projectObserver.observe(card);
+        });
+
+        // Optimized counter animation for achievements
+        function animateCounters() {
+            if (isReducedMotion) return;
+            
+            const counters = document.querySelectorAll('.text-3xl.font-bold');
+            counters.forEach(counter => {
+                const finalValue = counter.textContent;
+                const numericValue = parseInt(finalValue.replace(/\D/g, ''));
+                
+                if (numericValue > 0) {
+                    let currentValue = 0;
+                    const increment = numericValue / (isLowPowerMode ? 15 : 30);
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= numericValue) {
+                            currentValue = numericValue;
+                            clearInterval(timer);
+                        }
+                        counter.textContent = Math.floor(currentValue) + (finalValue.includes('+') ? '+' : '');
+                    }, isLowPowerMode ? 100 : 50);
+                }
+            });
+        }
+
+        // Trigger counter animation when achievements section is visible
+        const achievementsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    achievementsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const achievementsSection = document.querySelector('.bg-gradient-to-r.from-purple-600.to-blue-600');
+        if (achievementsSection) {
+            achievementsObserver.observe(achievementsSection);
+        }
+
+        // Performance monitoring (optional)
+        if (window.performance && window.performance.mark) {
+            window.performance.mark('portfolio-loaded');
+            window.performance.measure('portfolio-load-time', 'navigationStart', 'portfolio-loaded');
+        }
+
+        // Service Worker registration for offline support (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Uncomment to enable service worker
+                // navigator.serviceWorker.register('/sw.js');
+            });
+        }
     </script>
 
 </body>

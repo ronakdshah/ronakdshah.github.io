@@ -1,8 +1,156 @@
-<div class="section">
-    <h2>Skills</h2>
-    <ul>
-        {% for category, skills in skillset.items() %}
-        <li><strong>{{ category }}:</strong> {{ skills|join(", ") }}</li>
-        {% endfor %}
-    </ul>
+<!-- Skills & Tools Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Skills & Technologies</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">A comprehensive toolkit for building scalable, data-driven applications</p>
+        </div>
+        
+        <!-- Skill Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="skill-tab active px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full shadow-lg transition-all duration-300" data-category="core">
+                Core Technologies
+            </button>
+            <button class="skill-tab px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-full hover:bg-gray-200 transition-all duration-300" data-category="technical">
+                Technical Expertise
+            </button>
+            <button class="skill-tab px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-full hover:bg-gray-200 transition-all duration-300" data-category="domain">
+                Domain Knowledge
+            </button>
+        </div>
+        
+        <!-- Core Tools -->
+        <div id="core" class="skill-content active mb-16">
+            <h3 class="text-2xl font-bold text-gray-900 text-center mb-12">Core Technologies</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="tool-icon bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 text-center border border-blue-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fab fa-python text-white text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Python</h4>
+                    <p class="text-gray-600 text-sm">Backend development, data science, and automation</p>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="skill-progress rounded-full h-2" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div class="tool-icon bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center border border-green-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-database text-white text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">SQL</h4>
+                    <p class="text-gray-600 text-sm">Database design, optimization, and analytics</p>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="skill-progress rounded-full h-2" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="tool-icon bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 text-center border border-purple-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-cube text-white text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Kubernetes</h4>
+                    <p class="text-gray-600 text-sm">Container orchestration and cloud infrastructure</p>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="skill-progress rounded-full h-2" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Skills -->
+        <div id="technical" class="skill-content hidden">
+            <h3 class="text-2xl font-bold text-gray-900 text-center mb-12">Technical Expertise</h3>
+            <div class="max-w-4xl mx-auto space-y-6">
+                {% for category in technical_expertise.categories %}
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">{{ category.name }}</h4>
+                        <span class="text-sm text-gray-500">{{ category.proficiency }}%</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">{{ category.description }}</p>
+                    <div class="bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="skill-progress rounded-full h-3" style="width: {{ category.proficiency }}%"></div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Technologies:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            {% for tech in category.technologies %}
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Achievements:</h5>
+                        <ul class="space-y-1">
+                            {% for achievement in category.achievements %}
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">{{ achievement }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Domain Knowledge -->
+        <div id="domain" class="skill-content hidden">
+            <h3 class="text-2xl font-bold text-gray-900 text-center mb-12">Domain Knowledge</h3>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                {% for area in domain_knowledge.areas %}
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-xl font-bold text-gray-900">{{ area.name }}</h4>
+                        <span class="px-3 py-1 bg-purple-600 text-white rounded-full text-sm font-medium">{{ area.expertise_level }}</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">{{ area.description }}</p>
+                    
+                    <div class="mb-4">
+                        <h5 class="font-semibold text-gray-900 mb-2">Key Areas:</h5>
+                        <div class="flex flex-wrap gap-2">
+                            {% for key_area in area.key_areas %}
+                            <span class="px-2 py-1 bg-white/80 text-purple-700 rounded text-xs font-medium">{{ key_area }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-semibold text-gray-900 mb-2">Notable Achievements:</h5>
+                        <ul class="space-y-1">
+                            {% for achievement in area.achievements %}
+                            <li class="flex items-start space-x-2">
+                                <div class="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                                <span class="text-gray-700 text-sm">{{ achievement }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Key Achievements Summary -->
+            <div class="mt-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+                <h4 class="text-2xl font-bold mb-6 text-center">Key Achievements</h4>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">$600k</div>
+                        <div class="text-purple-100">ARR Generated</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">20%</div>
+                        <div class="text-purple-100">Accuracy Improvement</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">6,800+</div>
+                        <div class="text-purple-100">Indices Managed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
+</section>

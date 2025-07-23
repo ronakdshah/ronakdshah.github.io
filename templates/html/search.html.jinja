@@ -1,0 +1,219 @@
+<!-- Search and Filter Component -->
+<div class="search-filter-container bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 mb-8">
+    <div class="flex flex-col md:flex-row gap-4 items-center">
+        <!-- Search Input -->
+        <div class="flex-1 w-full">
+            <div class="relative">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Search experience, skills, or projects..." 
+                    class="w-full px-4 py-3 pl-12 pr-20 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                >
+                <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                <button id="search-button" class="absolute right-2 top-1/2 transform -translate-y-1/2 px-3 py-1 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm font-medium">
+                    Search
+                </button>
+            </div>
+        </div>
+        
+        <!-- Clear Filters -->
+        <button id="clear-filters" class="px-4 py-3 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-500 transition-all duration-300 font-medium">
+            Clear
+        </button>
+    </div>
+    
+    <!-- Active Filters Display -->
+    <div id="active-filters" class="mt-4 flex flex-wrap gap-2 hidden">
+        <!-- Active filters will be dynamically added here -->
+    </div>
+</div>
+
+<script>
+    class SearchFilterManager {
+        constructor() {
+            this.searchInput = document.getElementById('search-input');
+            this.searchButton = document.getElementById('search-button');
+            this.clearButton = document.getElementById('clear-filters');
+            this.activeFiltersContainer = document.getElementById('active-filters');
+            
+            this.searchTerm = '';
+            this.init();
+        }
+        
+        init() {
+            this.setupEventListeners();
+            this.setupKeyboardShortcuts();
+            this.setupDataAttributes();
+        }
+        
+        setupEventListeners() {
+            // Search button click
+            this.searchButton.addEventListener('click', () => {
+                this.performSearch();
+            });
+            
+            // Clear filters
+            this.clearButton.addEventListener('click', () => {
+                this.clearSearch();
+            });
+        }
+        
+        setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + K to focus search
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    this.searchInput.focus();
+                }
+                
+                // Enter key to perform search
+                if (e.key === 'Enter' && document.activeElement === this.searchInput) {
+                    e.preventDefault();
+                    this.performSearch();
+                }
+                
+                // Escape to clear search
+                if (e.key === 'Escape' && document.activeElement === this.searchInput) {
+                    this.searchInput.value = '';
+                    this.searchTerm = '';
+                    this.clearSearch();
+                }
+            });
+        }
+        
+        setupDataAttributes() {
+            // Add data attributes to experience cards
+            document.querySelectorAll('.experience-card').forEach((card, index) => {
+                const title = card.querySelector('h3')?.textContent || '';
+                const company = card.querySelector('.text-purple-600')?.textContent || '';
+                const description = card.querySelector('.text-gray-700')?.textContent || '';
+                
+                // Combine all text content for searching
+                const searchText = `${title} ${company} ${description}`.toLowerCase();
+                card.setAttribute('data-search', searchText);
+            });
+            
+            // Add data attributes to skill cards
+            document.querySelectorAll('.tool-icon').forEach(card => {
+                const title = card.querySelector('h4')?.textContent || '';
+                const description = card.querySelector('p')?.textContent || '';
+                const searchText = `${title} ${description}`.toLowerCase();
+                card.setAttribute('data-search', searchText);
+            });
+            
+            // Add data attributes to project cards
+            document.querySelectorAll('.bg-white.rounded-2xl').forEach(card => {
+                const title = card.querySelector('h4')?.textContent || '';
+                const description = card.querySelector('p')?.textContent || '';
+                const tags = Array.from(card.querySelectorAll('span')).map(tag => tag.textContent).join(' ');
+                const searchText = `${title} ${description} ${tags}`.toLowerCase();
+                card.setAttribute('data-search', searchText);
+            });
+        }
+        
+        performSearch() {
+            this.searchTerm = this.searchInput.value.toLowerCase().trim();
+            this.applySearch();
+        }
+        
+        applySearch() {
+            const searchableElements = document.querySelectorAll('[data-search]');
+            let visibleCount = 0;
+            
+            searchableElements.forEach(element => {
+                const searchText = element.getAttribute('data-search') || '';
+                const shouldShow = !this.searchTerm || searchText.includes(this.searchTerm);
+                
+                if (shouldShow) {
+                    element.style.display = '';
+                    element.classList.remove('filtered-out');
+                    element.classList.add('filtered-in');
+                    visibleCount++;
+                } else {
+                    element.style.display = 'none';
+                    element.classList.add('filtered-out');
+                    element.classList.remove('filtered-in');
+                }
+            });
+            
+            this.updateActiveFilters();
+            this.updateResultsCount(visibleCount, searchableElements.length);
+        }
+        
+        updateActiveFilters() {
+            if (this.searchTerm) {
+                this.activeFiltersContainer.innerHTML = 
+                    `<span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Search: "${this.searchTerm}"</span>`;
+                this.activeFiltersContainer.classList.remove('hidden');
+            } else {
+                this.activeFiltersContainer.classList.add('hidden');
+            }
+        }
+        
+        updateResultsCount(visibleCount, totalCount) {
+            if (this.searchTerm) {
+                this.searchInput.placeholder = `Found ${visibleCount} of ${totalCount} items...`;
+            } else {
+                this.searchInput.placeholder = 'Search experience, skills, or projects...';
+            }
+        }
+        
+        clearSearch() {
+            this.searchTerm = '';
+            this.searchInput.value = '';
+            
+            // Show all elements
+            document.querySelectorAll('[data-search]').forEach(element => {
+                element.style.display = '';
+                element.classList.remove('filtered-out', 'filtered-in');
+            });
+            
+            this.updateActiveFilters();
+            this.updateResultsCount(0, 0);
+            
+            // Focus search input
+            this.searchInput.focus();
+        }
+    }
+    
+    // Initialize search filter manager when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        new SearchFilterManager();
+    });
+</script>
+
+<style>
+    .filtered-out {
+        opacity: 0.3;
+        transform: scale(0.95);
+        transition: all 0.3s ease;
+    }
+    
+    .filtered-in {
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.3s ease;
+    }
+    
+    /* Search input focus animation */
+    #search-input:focus {
+        transform: scale(1.02);
+    }
+    
+    /* Active filter tags animation */
+    #active-filters span {
+        animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style> 

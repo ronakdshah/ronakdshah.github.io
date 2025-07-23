@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ personal.name }} - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .tool-icon {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tool-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .contact-link {
+            transition: color 0.3s ease;
+        }
+        .contact-link:hover {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+            <nav class="flex space-x-8">
+                <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                <a href="#work" class="text-gray-700 hover:text-blue-600 transition-colors">Work</a>
+                <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+            </nav>
+            <i class="fas fa-arrow-right text-gray-400"></i>
+        </div>
+    </header>
+
+    <!-- Main Content Card -->
+    <main class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            
+            <!-- Hero Section -->
+            <section class="mb-12 fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">{{ personal.name }}</h1>
+                <p class="text-xl text-gray-600">{{ summary.text }}</p>
+            </section>
+
+            <!-- Two Column Section: Past Experience & Contact -->
+            <section class="grid md:grid-cols-2 gap-12 mb-12 fade-in">
+                <!-- Past Experience -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Past Experience</h2>
+                    <div class="space-y-6">
+                        {% for experience in experiences %}
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-semibold text-gray-900">{{ experience.role }}</h3>
+                            <p class="text-blue-600 font-medium">{{ experience.company }}</p>
+                            <p class="text-gray-500 text-sm">{{ experience.duration }}</p>
+                            {% if experience.responsibilities %}
+                            <ul class="mt-2 space-y-1">
+                                {% for resp in experience.responsibilities %}
+                                <li class="text-gray-700 text-sm">• {{ resp.description }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-blue-600 w-5"></i>
+                            <a href="mailto:{{ personal.email }}" class="contact-link text-gray-700 hover:text-blue-600">{{ personal.email }}</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-blue-600 w-5"></i>
+                            <span class="text-gray-700">{{ personal.location }}</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-blue-600 w-5"></i>
+                            <a href="tel:{{ personal.phone }}" class="contact-link text-gray-700 hover:text-blue-600">{{ personal.phone }}</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fab fa-linkedin text-blue-600 w-5"></i>
+                            <a href="{{ personal.linkedin }}" target="_blank" class="contact-link text-gray-700 hover:text-blue-600">LinkedIn</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-globe text-blue-600 w-5"></i>
+                            <a href="{{ personal.webpage }}" target="_blank" class="contact-link text-gray-700 hover:text-blue-600">Website</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools Section -->
+            <section class="border-t border-gray-200 pt-8 mb-8 fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Tools</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {% for category, tools in skillset.items() %}
+                        {% for tool in tools %}
+                        <div class="tool-icon bg-gray-100 rounded-lg p-6 text-center hover:bg-blue-50">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-code text-blue-600 text-xl"></i>
+                            </div>
+                            <p class="font-medium text-gray-900">{{ tool }}</p>
+                        </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Bottom Section -->
+            <section class="border-t border-gray-200 pt-8 fade-in">
+                <div class="flex justify-between items-center">
+                    <div class="space-y-2">
+                        <div class="h-4 bg-gray-200 rounded w-48"></div>
+                        <div class="h-4 bg-gray-200 rounded w-32"></div>
+                    </div>
+                    <i class="fas fa-arrow-right text-gray-400"></i>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> 
