@@ -1,6 +1,6 @@
 # Portfolio Website - Static Site Generator
 
-A modern, responsive portfolio website built with Python, Jinja2 templates, and Tailwind CSS. Features dark/light mode, advanced search functionality, and accessibility compliance.
+A modern, responsive portfolio website built with Python, Jinja2 templates, and Tailwind CSS. Features dark/light mode, advanced search functionality, modular JavaScript architecture, and accessibility compliance.
 
 ## 🏗️ Project Architecture
 
@@ -22,6 +22,16 @@ portfolio-website/
 │       ├── contact.html.jinja # Contact information
 │       ├── search.html.jinja # Search and filter component
 │       └── accessibility.html.jinja # Accessibility enhancements
+├── static/                  # Modular JavaScript architecture
+│   ├── utils.js            # Performance optimizations and utilities
+│   ├── theme.js            # Dark/light mode functionality
+│   ├── accessibility.js    # ARIA setup and keyboard navigation
+│   ├── skills.js           # Skills tab switching
+│   ├── experience.js       # Expandable experience sections
+│   ├── animations.js       # All animation functionality
+│   ├── navigation.js       # Smooth scrolling
+│   ├── search.js           # Advanced search and filtering
+│   └── main.js             # Application initialization
 └── index.html               # Generated static output
 ```
 
@@ -39,7 +49,13 @@ portfolio-website/
 - Reusable components across sections
 - Maintainable and scalable
 
-#### 3. **Progressive Enhancement**
+#### 3. **Modular JavaScript Architecture**
+- Separated concerns into logical modules
+- Each module handles specific functionality
+- Easy to maintain and extend
+- Performance optimized with lazy loading
+
+#### 4. **Progressive Enhancement**
 - Works without JavaScript (basic functionality)
 - Enhanced with JavaScript for better UX
 - Accessibility-first approach
@@ -98,101 +114,8 @@ text = "Your professional summary"
 company = "Company Name"
 role = "Job Title"
 duration = "Start Date -- End Date"
-
-[[experiences.responsibilities]]
-title = "Responsibility Title"
-description = "Detailed description of the responsibility"
-
-[project]
-name = "Project Name"
-details = [
-    "Project detail 1",
-    "Project detail 2"
-]
-
-[project.research_paper]
-title = "Research Paper Title"
-link = "https://arxiv.org/abs/..."
-
-[awards]
-name = "Awards Section Title"
-details = [
-    "Award 1",
-    "Award 2"
-]
-
-[education]
-[[education.degrees]]
-degree = "Degree Name"
-school = "University Name"
-gpa = "3.95/4"
-start_date = "Aug 2019"
-end_date = "May 2021"
-
-[skillset]
-Languages = ["Python", "JavaScript", "SQL"]
-"Frameworks / Backend" = ["Flask", "FastAPI", "Django"]
-Infrastructure = ["Docker", "AWS", "Kubernetes"]
-"ML & Data" = ["Machine Learning", "Data Science", "Analytics"]
-
-# Enhanced Technical Expertise Section
-[technical_expertise]
-[[technical_expertise.categories]]
-name = "Backend Development"
-proficiency = 95
-description = "Expert-level backend development with focus on scalable APIs and microservices"
-technologies = ["FastAPI", "Flask", "Django", "Pydantic", "SQLAlchemy"]
-achievements = [
-    "Built production APIs handling 100+ portfolios/day",
-    "Scaled FastAPI backend on Kubernetes",
-    "Implemented async processing for real-time data"
-]
-
-[[technical_expertise.categories]]
-name = "Data Science & ML"
-proficiency = 90
-description = "Advanced machine learning and data science with focus on fintech applications"
-technologies = ["CatBoost", "GBM", "Graph Analytics", "Scikit-learn", "Pandas"]
-achievements = [
-    "Improved risk model accuracy by 20%",
-    "Reduced fraud by 10% with ML models",
-    "Applied graph analytics for fraud detection"
-]
-
-# Enhanced Domain Knowledge Section
-[domain_knowledge]
-[[domain_knowledge.areas]]
-name = "Fintech & Quantitative Finance"
-description = "Deep expertise in financial technology and quantitative modeling"
-expertise_level = "Expert"
-key_areas = [
-    "Portfolio Optimization",
-    "Risk Modeling",
-    "Index Management",
-    "Financial APIs",
-    "Real-time Trading Systems"
-]
-achievements = [
-    "Generated $600k ARR through portfolio automation",
-    "Managed 6,800+ indices with automated reporting",
-    "Built real-time risk exposure estimation systems"
-]
-
-[[domain_knowledge.areas]]
-name = "Machine Learning & AI"
-description = "Advanced machine learning with focus on practical business applications"
-expertise_level = "Advanced"
-key_areas = [
-    "Predictive Modeling",
-    "Fraud Detection",
-    "Graph Analytics",
-    "Automated Decision Systems",
-    "Model Productionization"
-]
-achievements = [
-    "Deployed ML models in production environments",
-    "Applied graph algorithms for fraud detection",
-    "Built automated risk assessment systems"
+responsibilities = [
+    { title = "Responsibility Title", description = "Description" }
 ]
 ```
 
@@ -201,6 +124,46 @@ achievements = [
 2. Add the section data to `config.toml`
 3. Include the template in `resume.html.jinja`
 4. Update the navigation if needed
+
+## ✨ Features
+
+### 1. **Advanced Search System**
+- **Real-time filtering** of experience cards
+- **Comprehensive search** including expandable details
+- **Keyboard shortcuts**: Ctrl+K (focus), Enter (search), Escape (clear)
+- **Visual feedback** with results counter and active filters
+- **Cached search** for optimal performance
+
+### 2. **Dark/Light Mode Toggle**
+- **Persistent theme** preference (localStorage)
+- **Smooth transitions** between themes
+- **Accessibility compliant** with proper ARIA labels
+- **System preference** detection
+
+### 3. **Interactive Skills Section**
+- **Tabbed interface** for Core, Technical, and Domain skills
+- **Progress bars** with animated loading
+- **Detailed expertise** with technologies and achievements
+- **Responsive design** for all screen sizes
+
+### 4. **Expandable Experience Timeline**
+- **Click to expand** detailed responsibilities
+- **Smooth animations** for content reveal
+- **Technology tags** for each experience
+- **Professional timeline** design
+
+### 5. **Accessibility Features**
+- **ARIA labels** and roles throughout
+- **Keyboard navigation** support
+- **Screen reader** compatibility
+- **High contrast** mode support
+- **Reduced motion** preferences respected
+
+### 6. **Performance Optimizations**
+- **Modular JavaScript** architecture
+- **Lazy loading** of animations
+- **Intersection Observer** for scroll-triggered effects
+- **Optimized animations** for low-power devices
 
 ## 🎨 Design System
 
@@ -257,7 +220,7 @@ achievements = [
 
 ### Adding Animations
 1. **CSS Animations**: Add to `base.html.jinja` styles
-2. **JavaScript Animations**: Add to `resume.html.jinja` scripts
+2. **JavaScript Animations**: Add to appropriate module in `static/`
 3. **Intersection Observer**: For scroll-triggered animations
 
 ### Modifying Layout
@@ -278,79 +241,40 @@ python -m py_compile templates/html/*.jinja
 python -c "import tomli; tomli.load(open('config.toml', 'rb'))"
 ```
 
-#### 2. **Missing Data**
-- Check `config.toml` for required fields
-- Ensure template variables match TOML structure
-- Use `{{ variable | default('fallback') }}` for optional fields
+#### 2. **Search Not Working**
+- Check browser console for JavaScript errors
+- Verify search input has correct ID (`search-input`)
+- Ensure experience cards have `.experience-card` class
+- Check that search.js is loaded after DOM elements
 
-#### 3. **Styling Issues**
-- Check browser console for CSS errors
-- Verify Tailwind classes are correct
-- Test in both light and dark modes
-- Check responsive behavior
+#### 3. **Skills Tabs Not Switching**
+- Verify skills.js is loaded
+- Check that tab buttons have correct data attributes
+- Ensure skill content divs have proper IDs
 
-#### 4. **JavaScript Errors**
-- Open browser developer tools
-- Check console for errors
-- Verify DOM elements exist before JavaScript runs
-- Test with JavaScript disabled
+#### 4. **Theme Toggle Not Working**
+- Check localStorage permissions
+- Verify theme.js is loaded
+- Check for CSS custom property conflicts
 
-### Debugging Tools
-
-#### 1. **Browser Developer Tools**
+### Performance Monitoring
 ```javascript
-// Check if elements have correct data attributes
-document.querySelectorAll('[data-search]').forEach(el => {
-    console.log(el.getAttribute('data-search'));
-});
+// Check if modules are loading
+console.log('Theme Manager:', window.ThemeManager);
+console.log('Search Manager:', window.SearchFilterManager);
 
-// Test theme switching
-localStorage.setItem('theme', 'dark');
-location.reload();
-```
-
-#### 2. **Template Debugging**
-```html
-<!-- Add this to templates for debugging -->
-<pre>{{ variable | tojson(indent=2) }}</pre>
-```
-
-#### 3. **Performance Monitoring**
-```javascript
-// Check for performance issues
+// Monitor search performance
 console.time('search');
 // ... search code ...
 console.timeEnd('search');
 ```
 
-### Testing Checklist
-
-#### ✅ **Functionality**
-- [ ] All navigation links work
-- [ ] Search functionality works
-- [ ] Dark/light mode toggle works
-- [ ] Contact links are correct
-- [ ] Responsive design on all screen sizes
-
-#### ✅ **Accessibility**
-- [ ] Screen reader compatibility
-- [ ] Keyboard navigation
-- [ ] Focus indicators
-- [ ] Color contrast ratios
-- [ ] Alt text for images
-
-#### ✅ **Performance**
-- [ ] Page loads quickly
-- [ ] No console errors
-- [ ] Smooth animations
-- [ ] Efficient search filtering
-
-## 🔄 Update Workflow
+## 📋 Update Workflow
 
 ### 1. **Content Updates**
 ```bash
 # Edit config.toml
-vim config.toml
+nano config.toml
 
 # Regenerate site
 python src/render_html.py
@@ -359,130 +283,98 @@ python src/render_html.py
 open index.html
 ```
 
-### 2. **Template Updates**
+### 2. **Template Changes**
 ```bash
 # Edit template files
-vim templates/html/section.html.jinja
+nano templates/html/experience.html.jinja
 
 # Regenerate and test
 python src/render_html.py
-open index.html
 ```
 
-### 3. **Styling Updates**
+### 3. **JavaScript Updates**
 ```bash
-# Edit base.html.jinja styles
-vim templates/html/base.html.jinja
+# Edit module files
+nano static/search.js
 
-# Test in browser
+# Regenerate and test
 python src/render_html.py
-open index.html
 ```
 
-### 4. **Adding New Features**
-1. Create new template file
-2. Add data to `config.toml`
-3. Include in main template
-4. Add JavaScript if needed
-5. Test thoroughly
-6. Update documentation
+### 4. **Styling Changes**
+```bash
+# Edit base template styles
+nano templates/html/base.html.jinja
 
-## 📚 Advanced Features
+# Regenerate and test
+python src/render_html.py
+```
+
+## 🚀 Advanced Features
 
 ### 1. **Search System**
-- Real-time filtering across all content
-- Keyboard shortcuts (Ctrl/Cmd + K)
-- Results counter
-- Clear filters functionality
+- **Cached experience divs** for optimal performance
+- **Comprehensive search** including expandable details
+- **Real-time filtering** with visual feedback
+- **Keyboard shortcuts** for power users
 
-### 2. **Accessibility Features**
-- Skip links
-- ARIA labels
-- Focus management
-- Screen reader support
-- High contrast mode
+### 2. **Modular JavaScript**
+- **Separated concerns** into logical modules
+- **Easy maintenance** and debugging
+- **Performance optimized** with lazy loading
+- **Scalable architecture** for future features
 
-### 3. **Performance Optimizations**
-- Reduced motion support
-- Low power mode detection
-- Throttled scroll events
-- Lazy loading with Intersection Observer
+### 3. **Accessibility**
+- **WCAG 2.1 AA** compliance
+- **Screen reader** support
+- **Keyboard navigation** throughout
+- **High contrast** mode support
 
-### 4. **Theme System**
-- CSS custom properties
-- Persistent preferences
-- Smooth transitions
-- System preference detection
-
-## 🚨 Troubleshooting
-
-### Build Issues
-```bash
-# Check Python version
-python --version
-
-# Verify dependencies
-pip list | grep -E "(jinja2|tomli)"
-
-# Test template rendering
-python -c "from jinja2 import Template; print(Template('Hello {{ name }}').render(name='World'))"
-```
-
-### Browser Issues
-- Clear browser cache
-- Test in incognito mode
-- Check for browser extensions interfering
-- Test in different browsers
-
-### Deployment Issues
-- Ensure `index.html` is in the root directory
-- Check file permissions
-- Verify all assets are included
-- Test locally before deploying
+### 4. **Performance**
+- **Static generation** for fast loading
+- **Optimized animations** for all devices
+- **Reduced motion** support
+- **Low power mode** detection
 
 ## 🤝 Contributing
 
+### Development Setup
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
 ### Code Style
-- Use consistent indentation (4 spaces)
-- Follow Jinja2 template conventions
-- Use semantic HTML
-- Maintain accessibility standards
+- **Python**: Follow PEP 8
+- **JavaScript**: Use ES6+ features
+- **HTML**: Semantic markup
+- **CSS**: Tailwind utility classes
 
-### Testing
-- Test on multiple browsers
-- Test on mobile devices
-- Test with screen readers
-- Test with JavaScript disabled
-
-### Documentation
-- Update README.md for new features
-- Add comments for complex logic
-- Document any breaking changes
-- Include examples for new functionality
+### Testing Checklist
+- [ ] Site generates without errors
+- [ ] All sections display correctly
+- [ ] Search functionality works
+- [ ] Theme toggle functions
+- [ ] Skills tabs switch properly
+- [ ] Experience sections expand
+- [ ] Responsive design works
+- [ ] Accessibility features function
+- [ ] Performance is acceptable
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🆘 Support
 
 For issues and questions:
-1. Check this README first
-2. Review the debugging section
-3. Test with the provided debugging tools
+1. Check the debugging section above
+2. Review browser console for errors
+3. Test with different browsers
 4. Create an issue with detailed information
-
-## 🐳 How to deploy on minikube
-
-```bash
-minikube start
-eval $(minikube docker-env)
-docker build -t portfolio-website .
-kubectl apply -f deployment.yaml && kubectl apply -f service.yaml
-minikube service portfolio-website --url
-```
 
 ---
 
-**Happy coding! 🎉**
+**Built with ❤️ using Python, Jinja2, and Tailwind CSS**
 

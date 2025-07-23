@@ -99,6 +99,26 @@
             transform: translateX(0);
         }
         
+        /* Ensure hidden class works for tab switching */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Skill content transitions - using !important to override Tailwind */
+        .skill-content {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .skill-content.skill-hidden {
+            display: none !important;
+        }
+        
+        .skill-content.skill-active {
+            display: block !important;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         .tool-icon {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -213,6 +233,40 @@
             transform: rotate(180deg);
         }
 
+        /* Search functionality styles */
+        .filtered-out {
+            opacity: 0.3;
+            transform: scale(0.95);
+            transition: all 0.3s ease;
+        }
+        
+        .filtered-in {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.3s ease;
+        }
+        
+        /* Search input focus animation */
+        #search-input:focus {
+            transform: scale(1.02);
+        }
+        
+        /* Active filter tags animation */
+        #active-filters span {
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Dark mode specific styles */
         .dark .bg-white {
             background-color: var(--bg-secondary);
@@ -304,6 +358,18 @@
         </a>
     </div>
 
+    <!-- Modular JavaScript -->
+    <script src="static/utils.js"></script>
+    <script src="static/theme.js"></script>
+    <script src="static/accessibility.js"></script>
+    <script src="static/skills.js"></script>
+    <script src="static/experience.js"></script>
+    <script src="static/animations.js"></script>
+    <script src="static/navigation.js"></script>
+    <script src="static/main.js"></script>
+    <script src="static/search.js"></script>
+    
     {% block scripts %}{% endblock %}
 </body>
 </html>
+
