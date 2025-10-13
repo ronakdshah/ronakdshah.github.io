@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume Splash</title>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .hero p {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* BUTTONS ROW */
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* CONTACT + RESUME BOXES */
+    .bottom-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 2rem;
+      flex: 1 1 300px;
+      text-align: left;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .list li {
+      margin: 0.5rem 0;
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem 2rem;
+      flex: 1 1 300px;
+      text-align: left;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* icon row */
+    .contact-icons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.25rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .icon-circle:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+
+<body>
+  <main class="hero">
+    <!-- Name and Title -->
+    <div>
+      <h1>Ronak D. Shah</h1>
+      <h2>Software Engineer</h2>
+      <p>Backend Engineer with 2+ years of experience in scalable systems and 5+ years in ML/data. Proven fintech impact
+        through automation, tooling, and risk modeling</p>
+    </div>
+
+    <!-- Contact + Resume inline -->
+    <div class="bottom-row">
+      <div class="card" style="text-align:center;">
+        <h3>Contact</h3>
+        <div class="contact-icons">
+          <a href="mailto:you@example.com" class="icon-circle" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="tel:+1234567890" class="icon-circle" aria-label="Phone">
+            <i class="fas fa-phone"></i>
+          </a>
+          <a href="https://linkedin.com/in/your-handle" class="icon-circle" aria-label="LinkedIn" target="_blank"
+            rel="noreferrer">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="card" style="text-align:center;">
+        <h3>Résumé</h3>
+        <a href="assets/resume.pdf" class="btn" download="Ro_Resume.pdf">⤓ Download PDF</a>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
