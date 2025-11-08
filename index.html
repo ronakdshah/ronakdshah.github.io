@@ -1,227 +1,236 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ronak D. Shah</title>
-  <style>
-    :root {
-      --bg: #f9fafb;
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --accent: #2563eb;
-      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --radius: 16px;
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronak D. Shah</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    * {
-      box-sizing: border-box;
-    }
+        body {
+            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            line-height: 1.5;
+            color: rgb(55, 53, 47);
+            max-width: 900px;
+            margin: 2em auto;
+            padding: 0 1em;
+        }
 
-    html,
-    body {
-      margin: 0;
-      height: 100%;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-    }
+        .cover-image {
+            width: 100%;
+            max-height: 30vh;
+            object-fit: cover;
+            object-position: center 50%;
+        }
 
-    /* HERO SECTION */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-      gap: 2rem;
-    }
+        .header-icon {
+            font-size: 3rem;
+            margin: -0.72em 0 1rem 0.07em;
+        }
 
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      margin: 0;
-    }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75em;
+        }
 
-    .hero h2 {
-      font-size: clamp(1.25rem, 3vw, 1.75rem);
-      font-weight: 500;
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            letter-spacing: -0.01em;
+        }
 
-    .hero p {
-      margin-top: 1rem;
-      color: var(--muted);
-      font-size: 1rem;
-    }
+        p {
+            margin: 0.5em 0;
+        }
 
-    /* BUTTONS ROW */
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
 
-    .button {
-      display: inline-block;
-      padding: 0.75rem 1.25rem;
-      border: 2px solid var(--accent);
-      border-radius: 12px;
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: 600;
-      transition: all 0.2s ease;
-    }
+        hr {
+            border: none;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+            margin: 1em 0;
+        }
 
-    .button:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
+        .callout {
+            border-radius: 10px;
+            padding: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            margin: 1.25em 0;
+        }
 
-    /* CONTACT + RESUME BOXES */
-    .bottom-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      max-width: 800px;
-      width: 100%;
-    }
+        .callout-icon {
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
 
-    .card {
-      background: var(--card);
-      border: 1px solid #e5e7eb;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.5rem 2rem;
-      flex: 1 1 300px;
-      text-align: left;
-    }
+        .callout-content {
+            flex: 1;
+        }
 
-    .card h3 {
-      margin-top: 0;
-      font-size: 1.1rem;
-    }
+        .callout-pink {
+            background: rgba(250, 233, 241, 1);
+        }
 
-    .list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+        .callout-default {
+            background: rgba(240, 239, 237, 1);
+        }
 
-    .list li {
-      margin: 0.5rem 0;
-      color: var(--text);
-    }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #4A90E2;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
 
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.25rem;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      text-align: center;
-      transition: opacity 0.2s ease;
-    }
+        .download-btn:hover {
+            background: #357ABD;
+        }
 
-    .btn:hover {
-      opacity: 0.9;
-    }
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
 
-    .card {
-      background: var(--card);
-      border: 1px solid #e5e7eb;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.5rem 2rem;
-      flex: 1 1 300px;
-      text-align: left;
-    }
+        .columns {
+            display: flex;
+            gap: 2em;
+            margin: 1em 0;
+            align-items: baseline;
+        }
 
-    .card h3 {
-      margin-top: 0;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
+        .column {
+            flex: 1;
+            min-width: 0;
+        }
 
-    /* icon row */
-    .contact-icons {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+        .column-60 {
+            flex: 0 0 60%;
+        }
 
-    .icon-circle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #fff;
-      font-size: 1.25rem;
-      text-decoration: none;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
+        .column-40 {
+            flex: 0 0 calc(40% - 2em);
+        }
 
-    .icon-circle:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        .date-column {
+            text-align: right;
+        }
 
+        ul {
+            padding-left: 1.7em;
+            margin: 0.6em 0;
+        }
+
+        li {
+            padding-left: 0.1em;
+            margin: 0.3em 0;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .columns {
+                flex-direction: column;
+                gap: 0.5em;
+            }
+
+            .column-60, .column-40 {
+                flex: 1;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <main class="hero">
-    <!-- Name and Title -->
-    <div>
-      <h1>Ronak D. Shah</h1>
-      <h2>Software Engineer</h2>
-      <p>Backend Engineer with 2+ years of experience in scalable systems and 5+ years in ML/data. Proven fintech impact
-        through automation, tooling, and risk modeling</p>
-    </div>
+    <header>
+        <img class="cover-image" src="https://images.unsplash.com/photo-1639066648921-82d4500abf1a?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb" alt="Cover">
+        <div class="header-icon">✨</div>
+        <h1>Ro D. Shah</h1>
+    </header>
 
-    <!-- Contact + Resume inline -->
-    <div class="bottom-row">
-      <div class="card" style="text-align:center;">
-        <h3>Contact</h3>
-        <div class="contact-icons">
-          <a href="mailto:roshah2023@gmail.com" class="icon-circle" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="tel:+14124471666" class="icon-circle" aria-label="Phone">
-            <i class="fas fa-phone"></i>
-          </a>
-          <a href="https://linkedin.com/in/ronakshah52" class="icon-circle" aria-label="LinkedIn" target="_blank"
-            rel="noreferrer">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
+    <main>
+        <div class="callout callout-pink">
+            <div class="callout-icon">🎨</div>
+            <div class="callout-content">
+                <strong>Hi! I'm Ro, a Backend Engineer based in San Francisco</strong>
+                <p>I'm Engineer with a rare blend of scalable backend expertise and deep ML experience, helping companies build reliable systems and data-driven products that scale</p>
+            </div>
         </div>
-      </div>
 
+        <h2>💪 About Me</h2>
+        <hr>
+        <p>I'm a backend engineer who loves building quiet, reliable systems that just work. I have spent years in fintech and data-driven environments designing APIs, automating workflows, and untangling complex problems to make software feel calm and dependable. I care about craftsmanship, clarity, and building things that help people without demanding attention.</p>
+        <p>When I am not coding, I am usually writing fantasy worlds, sketching maps, or relaxing with retro games. Whether it is a codebase or an imagined kingdom, I enjoy building systems that feel alive and thoughtful.</p>
 
-      <div class="card" style="text-align:center;">
-        <h3>Résumé</h3>
-        <a href="https://docs.google.com/document/d/197DAX5WGEuxg_LhS0zu-SNIySroV_QUOS5OTQTbow-k/export?format=pdf"
-          class="btn" download="Ro_Resume.pdf">⤓ Download PDF</a>
-      </div>
-    </div>
-  </main>
+        <h2>📋 Experience</h2>
+        <hr>
+        <div class="columns">
+            <div class="column-60">
+                <strong>Backend Engineer - MerQube Inc.</strong>
+            </div>
+            <div class="column-40 date-column">
+                June 2023 - Present
+            </div>
+        </div>
+        <p>At MerQube, I built and scaled core backend systems for index computation, including a billion-row data store, production APIs, automated reporting pipelines, and cost-efficient infrastructure. My focus was on making complex processes simple, reliable, and ready to grow.</p>
+
+        <div class="columns">
+            <div class="column-60">
+                <strong>ML Engineer- Affirm Inc.</strong>
+            </div>
+            <div class="column-40 date-column">
+                October 2021 - May 2023
+            </div>
+        </div>
+        <p>At Affirm, I worked as an ML engineer focused on improving risk decisioning through practical, data-driven systems, including merchant risk models, onboarding workflows, and graph-based fraud detection. My work aimed to strengthen trust and reduce losses by making risk assessments more accurate, thoughtful, and resilient</p>
+
+        <h2>📈 Skills</h2>
+        <hr>
+        <div class="columns">
+            <div class="column">
+                <ul>
+                    <li><strong>Scalable Backend Systems:</strong> Designed and rolled out production-grade APIs, data services, and workflows across K8s environments, supporting billions of records and mission-critical workloads.</li>
+                    <li><strong>Cloud & DevOps Automation:</strong> Reduced compute costs and improved operational efficiency through predictive autoscaling, CI/CD, and instrumentation using AWS, Docker, and monitoring stacks.</li>
+                </ul>
+            </div>
+            <div class="column">
+                <ul>
+                    <li><strong>Machine Learning & Risk Modeling:</strong> Developed ML models and graph-based systems to improve fraud prediction, merchant risk assessment, and onboarding accuracy in fintech settings.</li>
+                    <li><strong>Data Engineering & Pipelines:</strong> Built reliable data pipelines, automated reporting workflows, and validated large-scale index computation and reporting infrastructure.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📬 Contact</h2>
+        <hr>
+        <p>Reach me at <a href="mailto:roshah2023@gmail.com">roshah2023@gmail.com</a> or on LinkedIn at <a href="http://www.linkedin.com/in/ronakshah52">/in/ronakshah52</a>. Let's connect and learn together!</p>
+
+        <div style="margin-top: 2em;">
+            <a href="https://docs.google.com/document/d/197DAX5WGEuxg_LhS0zu-SNIySroV_QUOS5OTQTbow-k/export?format=pdf" class="download-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download My Resume
+            </a>
+        </div>
+    </main>
 </body>
-
 </html>
