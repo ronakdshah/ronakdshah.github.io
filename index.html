@@ -14,7 +14,8 @@
         body {
             font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
             line-height: 1.5;
-            color: rgb(55, 53, 47);
+            color: #E8E6E3;
+            background: #1F1F1F;
             max-width: 900px;
             margin: 2em auto;
             padding: 0 1em;
@@ -50,13 +51,17 @@
         }
 
         a {
-            color: inherit;
+            color: #CC9B7A;
             text-decoration: underline;
+        }
+
+        a:hover {
+            color: #D4A882;
         }
 
         hr {
             border: none;
-            border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin: 1em 0;
         }
 
@@ -78,19 +83,21 @@
         }
 
         .callout-pink {
-            background: rgba(250, 233, 241, 1);
+            background: rgba(193, 76, 138, 0.15);
+            border: 1px solid rgba(193, 76, 138, 0.3);
         }
 
         .callout-default {
-            background: rgba(240, 239, 237, 1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .download-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: #4A90E2;
-            color: white;
+            background: #CC9B7A;
+            color: #1F1F1F;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
@@ -99,7 +106,8 @@
         }
 
         .download-btn:hover {
-            background: #357ABD;
+            background: #D4A882;
+            color: #1F1F1F;
         }
 
         .download-btn svg {
